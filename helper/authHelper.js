@@ -6,6 +6,10 @@ const hashPassword = async (password) => {
   return await bcrypt.hash(password, salt);
 };
 
+ const comparePassword = async(password, hashedPassword) => {
+  return bcrypt.compare(password, hashedPassword);
+}
+
 module.exports = {
-    hashPassword
+    hashPassword, comparePassword
 }

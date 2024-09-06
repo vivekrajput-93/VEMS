@@ -1,5 +1,7 @@
 const User = require("../models/authModel.js");
-const { hashPassword } = require("../helper/authHelper");
+const { hashPassword, comparePassword } = require("../helper/authHelper");
+const jwt = require("jsonwebtoken");
+const { JWT_SECRET } = require("../config/ServerConfig.js");
 
 
 ///////////////////////////     Register Controller ///////////////////////
@@ -54,6 +56,67 @@ const registerController = async (req, res) => {
   }
 };
 
+
+
+///////////////////////////       Login Controller /////////////////////////////////
+
+const loginController = async (req, res) => {
+  try {
+    const {email, password} = req.body
+
+
+    if(!email|| !password) {
+      return res.status(400).send({
+        message : "Wrong Credientials",
+        success : false
+      })
+    }
+
+    const user = await User.findOne({email})
+    if(!user) {
+      return res.status(404).send({
+        success : false,
+        message : "User is not Registered, please singup"
+      })
+    }
+
+    const match = await comparePassword(password, user.password);
+    if(!match) {
+      return res.status(200).send({
+        message : "Invalid Password",
+        success : false
+      })
+    }
+
+    const token = await jwt.sign({ _id : user.id}, JWT_SECRET, { expiresIn : "7D"});
+
+    res.status(200).send({
+      success : true,
+      message : "Login Successfull",
+      user : {
+        user : user.username,
+        email : user.email,
+        role : user.role
+      },
+      token
+    })
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success : false,
+      message : "Failed to Login the User",
+      err : error
+    })
+  }
+}
+
+
+
+
+
+
+
 module.exports = {
-  registerController
+  registerController, loginController
 };

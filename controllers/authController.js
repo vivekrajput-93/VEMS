@@ -12,7 +12,7 @@ const registerController = async (req, res) => {
 
     // Validate input
     if (!username) {
-      return res.status(400).send({ message: "Username is required!" });
+      return res.status(400).send({ message: "username is required!" });
     }
     if (!email) {
       return res.status(400).send({ message: "Email is required!" });

@@ -39,8 +39,6 @@ const registerController = async (req, res) => {
       password: hashedPassword,
       role: role || 0 // Default to role 0 if not provided
     });
-
-    // Respond with success
     return res.status(201).send({
       success: true,
       message: "User is registered successfully!",
@@ -112,11 +110,21 @@ const loginController = async (req, res) => {
 }
 
 
+///////////////////////////////////       Test Controller //////////////////////////////////////
 
+
+const testController = (req, res) => {
+  try {
+    res.send("Protected Routes")
+  } catch (error) {
+    console.log(error);
+    res.send({ error })
+  }
+}
 
 
 
 
 module.exports = {
-  registerController, loginController
+  registerController, loginController, testController
 };

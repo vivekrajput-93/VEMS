@@ -1,21 +1,15 @@
 import { Component } from '@angular/core';
+import { HeaderComponent } from "../../../components/Layouts/header/header.component";
+import { SidebarComponent } from "../../../components/sidebar/sidebar.component";
 
 @Component({
   selector: 'app-admin',
   standalone: true,
-  imports: [],
+  imports: [HeaderComponent, SidebarComponent],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.scss'
 })
 export class AdminComponent {
-onSettings() {
-throw new Error('Method not implemented.');
-}
-onViewReports() {
-throw new Error('Method not implemented.');
-}
-onAddUser() {
-throw new Error('Method not implemented.');
-}
+
 
 }

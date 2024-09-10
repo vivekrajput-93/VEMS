@@ -1,0 +1,52 @@
+
+.main-container {
+    padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+    background-color: #06742e;
+    gap: 1rem;
+    // height: 100vh;
+}
+
+ul span {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: gray;
+
+}
+
+
+ul  {
+    display: flex;
+    flex-direction: column;
+    gap: .8rem;
+}
+
+ul li {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-left: .5rem;
+    
+
+    a {
+        color: white;
+        font-weight: 400 ;
+        font-size: 1rem;
+    }
+}
+
+
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+
+  

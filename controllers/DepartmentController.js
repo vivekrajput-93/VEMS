@@ -22,7 +22,7 @@ const createDepartmentController = async (req, res) => {
       return res.status(401).send({
         success: false,
         message: "Department Already exists",
-        error,
+        
       });
     }
 

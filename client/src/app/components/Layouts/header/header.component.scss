@@ -1,0 +1,136 @@
+.header-container {
+    width: 100%;
+    display: flex;
+    background: linear-gradient(90deg, rgba(97, 214, 107, 1) 39%, rgba(6, 116, 46, 1) 100%);
+}
+
+
+.left-container {
+    display: flex;
+    flex: 1;
+    gap: 5rem;
+    color: white;
+    padding: 10px 60px;
+}
+
+
+
+.main-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-logo img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+
+}
+
+
+
+.title-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.title-container i {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.title-container span {
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+
+
+.right-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    align-items: center;
+    flex: 1;
+}
+
+.search-container {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    padding: 6px 12px;
+    height: fit-content;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+
+
+    input {
+        border: none;
+        outline: none;
+        padding: 3px 5px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        background-color: transparent;
+        color: white;
+    }
+
+    input::placeholder {
+        color: white; 
+      }
+      
+
+    i {
+        font-size: 1.3rem;
+        color: white
+    }
+}
+
+
+
+
+
+
+.flag-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background-color: rgba(255, 255, 255, 0.3);
+    padding: 6px 12px;
+    border-radius: 5px;
+
+    span {
+        font-weight: 600;
+        color: white;
+    }
+
+    i {
+        font-size: 1.5rem;
+        font-weight: 200;
+        color: white
+    }
+}
+
+
+
+.admin-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background-color: rgba(255, 255, 255, 0.3);
+    padding: 6px 12px;
+    border-radius: 5px;
+    color: white;
+    font-weight: 700;
+
+
+    i {
+        font-size: 1.5rem;
+    }
+}

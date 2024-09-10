@@ -42,8 +42,7 @@ export class LoginComponent {
           });
           return;
         }
-
-        this.router.navigate(['/admin']);
+        { this.authService.userValue?.user?.role === 1 ? this.router.navigate(['/admin-dashboard']) : this.router.navigate(['/user-dashboard']);}
       },
       error: (err: any) => {
         console.log('Error in login', err);

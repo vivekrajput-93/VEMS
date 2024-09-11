@@ -6,3 +6,16 @@ export interface User {
     token? : string;
 }
 
+
+export interface Emplloyee {
+    firstName : string,
+    lastName : string,
+    email : string,
+    position : string,
+    status : string,
+    phone : number,
+    departmentId : number,
+    hiredDate : number
+
+}
+

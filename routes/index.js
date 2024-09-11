@@ -2,8 +2,8 @@ const express = require("express");
 const router = express.Router();
 const {registerController, loginController, testController} = require("../controllers/authController");
 const { requiredSignIn, isAdmin } = require("../middlewares/authMiddleware");
-const { createEmployeeController } = require("../controllers/EmployeeController");
-const { createDepartmentController } = require("../controllers/DepartmentController");
+const { createEmployeeController, getEmployeeController } = require("../controllers/EmployeeController");
+const { createDepartmentController, getDepartmentController } = require("../controllers/DepartmentController");
 
 ///////////////////////         Auth Routes ////////////////////////////
 
@@ -23,10 +23,14 @@ router.get("/auth/test", requiredSignIn, isAdmin, testController);
 
 router.post("/auth/create-dept", createDepartmentController)
 
+router.get("/auth/get-dept", getDepartmentController)
+
 
 //////////////////    Employees Routes  //////////////////////////////
 
 router.post("/auth/createEmployee",  createEmployeeController)
+
+router.get("/auth/get-employee", getEmployeeController)
 
 
 

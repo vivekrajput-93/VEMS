@@ -1,0 +1,62 @@
+<div class="main-section">
+    <div class="form-container">
+        <h2>Employee Creation</h2>
+
+        <div class="form-section">
+            <div class="first-input-container input">
+                <div>
+                    <label >First Name</label>
+                    <input type="text" placeholder="John..." [(ngModel)]='fisrtName' >
+                </div>
+                <div>
+                    <label >Last Name</label>
+                    <input type="text" placeholder="Ex:- Doe..." [(ngModel)]="lastName">
+                </div>
+                
+            </div>
+            <div class="second-input-container input">
+                <div>
+                    <label >Email</label>
+                    <input type="email" placeholder="john12@example.com..." [(ngModel)]="email" >
+                </div>
+                <div>
+                    <label>Position</label>
+                    <input type="text" placeholder="Sr. Developer...." [(ngModel)]="position" >
+                </div>
+                <div>
+                    <label >Department Id</label>
+                    <input type="text" placeholder="Ex: UI/UX Design..." [(ngModel)]="departmentId" >
+                </div>
+            </div>
+            <div class="third-input-container input">
+                <div>
+                    <label >Hired Date</label>
+                    <input type="date" [(ngModel)]="hiredDate" >
+                </div>
+                <div>
+                    <label >Phone</label>
+                    <input type="tel" placeholder="679-231-6789" [(ngModel)]="phone" >
+                </div>
+            </div>
+            <div class="fourth-input-container ">
+                <label>Status</label>
+                <div class="dropdown">
+                    <select class="dropdown-btn" [(ngModel)]="status">
+                      <option value="">Select a status</option>
+                      <option value="Active">Active</option>
+                      <option value="On Leave">On Leave</option>
+                      
+                    </select>
+                    
+                  </div>
+                  
+            </div>
+            <button>Create</button>
+        </div>
+    </div>
+</div>
+
+<div>
+    {{hiredDate}}
+    {{status}}
+</div>

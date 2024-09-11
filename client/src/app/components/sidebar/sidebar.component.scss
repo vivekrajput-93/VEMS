@@ -1,17 +1,19 @@
 
 .main-container {
-    padding-left: 10px;
     display: flex;
     flex-direction: column;
-    background-color: #06742e;
+    background-color: #212529;
+    height: fit-content;
+    padding: 10px 12px;
     gap: 1rem;
     // height: 100vh;
 }
 
 ul span {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: 500;
     color: gray;
+    margin-top: 1rem;
 
 }
 
@@ -37,7 +39,6 @@ ul li {
 }
 
 
-
 /* width */
 ::-webkit-scrollbar {
     width: 10px;
@@ -47,6 +48,13 @@ ul li {
   ::-webkit-scrollbar-track {
     background: #f1f1f1;
   }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #6c757d;
+    border-radius: 5px;
+  }
+
   
 
   

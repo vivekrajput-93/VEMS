@@ -1,0 +1,129 @@
+.main-section {
+    display: flex;
+    justify-content: center;
+
+
+
+
+    .form-container {
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 2rem;
+        margin: 30px;
+        width: 820px;
+
+        h2 {
+            padding: 10px 20px;
+            font-weight: 400;
+            color: rgb(34, 197, 94);
+        }
+
+
+        .form-section {
+            display: flex;
+            flex-direction: column;
+            gap: 1.8rem;
+            padding: 10px 20px;
+
+
+            .input {
+                display: flex;
+                justify-content: space-between;
+                gap: 1.2rem;
+
+
+                div {
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%;
+                    gap: 9px;
+
+
+                    input {
+                        width: 1/2;
+                        padding: 10px 10px;
+                        border: none;
+                        outline: none;
+                        font-size: 1rem;
+                        font-weight: 600;
+                        background-color: #212529;
+                        border-radius: 5px;
+                        color: white;
+                    }
+
+                    label {
+                        font-size: 1rem;
+                        color: rgb(34, 197, 94);
+                        font-weight: 400;
+                    }
+
+                }
+            }
+
+
+            .fourth-input-container {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                width: 100%;
+
+                label {
+                    font-size: 1rem;
+                    color: linear-gradient(90deg, rgba(97,214,107,1) 39%, rgba(6,116,46,1) 100%);
+                    font-weight: 400;
+                }
+
+                //////////   Dropdown /////////////
+
+                .dropdown {
+                    position: relative;
+                    display: inline-block;
+                    width: 100%;
+                }
+
+                .dropdown-btn {
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 4px;
+                    background-color: #212529;
+                    color: white;
+                    padding: 8px 12px;
+                    font-size: 16px;
+                    font-weight: 600;
+                    border: none;
+                    cursor: pointer;
+                    border-radius: 5px;
+                    outline: none;
+
+                    i {
+                        font-size: 1.2rem;
+                    }
+                }
+
+
+
+
+            }
+
+            button {
+                border: none;
+                outline: none;
+                padding: 10px 10px;
+                font-size: 1rem;
+                font-weight: 600;
+                border-radius: 5px;
+                cursor: pointer;
+                background: linear-gradient(90deg, rgba(97,214,107,1) 39%, rgba(6,116,46,1) 100%);
+                text-transform: uppercase;
+                color : white;
+            }
+        }
+    }
+
+
+
+}

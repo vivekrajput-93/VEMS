@@ -2,33 +2,22 @@ import { Routes } from '@angular/router';
 import { LoginComponent } from '../app/components/auth/login/login.component';
 import { RegisterComponent } from '../app/components/auth/register/register.component';
 import { AdminComponent } from './pages/Admin/admin/admin.component';
-import { HeaderComponent } from './components/Layouts/header/header.component';
-import { DashboardComponent } from './pages/User/dashboard/dashboard.component';
+import { CreateEmployeeComponent } from './pages/Employees/create-employee/create-employee.component';
+import { EditEmployeeComponent } from './pages/Employees/edit-employee/edit-employee.component';
 
 export const routes: Routes = [
-
+    { path: '', redirectTo: 'login', pathMatch: 'full' },
+    { path: 'login', component: LoginComponent },
+    { path: 'register', component: RegisterComponent },
     {
-        path : '',
-        component : LoginComponent
+        path: 'admin',
+        component: AdminComponent,
+        children: [
+            { path: 'create-emp', component: CreateEmployeeComponent },
+            { path: 'edit-emp', component: EditEmployeeComponent },
+            
+        
+        ]
     },
-    {
-        path : "login",
-        component : LoginComponent
-    },
-    {
-        path : "register",
-        component : RegisterComponent
-    },
-    {
-        path : 'admin-dashboard',
-        component : AdminComponent
-    },
-    {
-        path : 'header',
-        component : HeaderComponent
-    },
-    {
-        path : 'user-dashboard',
-        component : DashboardComponent
-    }
+    
 ];

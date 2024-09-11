@@ -29,15 +29,15 @@ const registerController = async (req, res) => {
       });
     }
 
-    // Hash the password
+    
     const hashedPassword = await hashPassword(password);
 
-    // Create a new user
+    
     const user = await User.create({
       username,
       email,
       password: hashedPassword,
-      role: role || 0 // Default to role 0 if not provided
+      role: role || 0 
     });
     return res.status(201).send({
       success: true,

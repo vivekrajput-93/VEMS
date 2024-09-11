@@ -43,6 +43,27 @@ const createDepartmentController = async (req, res) => {
 };
 
 
+//////////////////////    Fetch all department ////////////////////
+
+const getDepartmentController = async(req, res) => {
+  try {
+    const department = await Department.find({});
+    return res.status(200).send({
+      success : true,
+      message : "Fetched department successfully",
+      department
+    })
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success : false,
+      message : "Error in fetching the department",
+      err : error
+    })
+  }
+}
+
+
 module.exports = {
-    createDepartmentController
+    createDepartmentController, getDepartmentController
 }

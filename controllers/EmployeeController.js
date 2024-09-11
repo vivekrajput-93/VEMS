@@ -61,7 +61,28 @@ const createEmployeeController = async (req, res) => {
 };
 
 
+const getEmployeeController = async(req, res) => {
+  try {
+    const employee = await Employee.find({});
+    res.status(200).send({
+      success : true,
+      message : "Employee fetched successfully",
+      employee
+    })
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success : false,
+      message : "Error in getting employee",
+      err : error
+    })
+  }
+}
+
+
+
+
 
 module.exports = {
-    createEmployeeController
+    createEmployeeController, getEmployeeController
 }

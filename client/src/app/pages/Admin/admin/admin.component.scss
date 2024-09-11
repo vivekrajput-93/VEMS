@@ -4,15 +4,18 @@
     
 }
 
+.main-container {
+  height: 100%;
+}
+
 .grid-container {
-    border: 2px solid white;
+
     height: 100vh;
     display: flex;
     gap: 2rem;
 }
 
 .sidebar-container {
-    height: 100vh !important;
     overflow-y: scroll;
     overflow-x: auto;
     flex: 1;
@@ -38,12 +41,10 @@
   
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background: #f074c5;
+    background: #6c757d;
     border-radius: 5px;
   }
+
   
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: #f074c5;
-  }
+  
   

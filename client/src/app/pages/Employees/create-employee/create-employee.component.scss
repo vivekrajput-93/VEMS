@@ -71,11 +71,13 @@
 
                 label {
                     font-size: 1rem;
-                    color: linear-gradient(90deg, rgba(97,214,107,1) 39%, rgba(6,116,46,1) 100%);
+                    color: linear-gradient(90deg, rgba(97, 214, 107, 1) 39%, rgba(6, 116, 46, 1) 100%);
                     font-weight: 400;
                 }
 
                 //////////   Dropdown /////////////
+                
+
 
                 .dropdown {
                     position: relative;
@@ -107,6 +109,8 @@
 
 
 
+
+
             }
 
             button {
@@ -117,9 +121,9 @@
                 font-weight: 600;
                 border-radius: 5px;
                 cursor: pointer;
-                background: linear-gradient(90deg, rgba(97,214,107,1) 39%, rgba(6,116,46,1) 100%);
+                background: linear-gradient(90deg, rgba(97, 214, 107, 1) 39%, rgba(6, 116, 46, 1) 100%);
                 text-transform: uppercase;
-                color : white;
+                color: white;
             }
         }
     }

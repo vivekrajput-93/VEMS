@@ -7,7 +7,7 @@ export interface User {
 }
 
 
-export interface Emplloyee {
+export interface Employee {
     firstName : string,
     lastName : string,
     email : string,
@@ -19,3 +19,7 @@ export interface Emplloyee {
 
 }
 
+
+export interface Department {
+    deptName : string
+}

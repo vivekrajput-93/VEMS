@@ -4,25 +4,17 @@
     
 }
 
-.main-container {
-  height: 100%;
-}
 
 .grid-container {
 
-    height: 100vh;
+    height: fit-content;
     display: flex;
     gap: 2rem;
 }
 
-.sidebar-container {
-    overflow-y: scroll;
-    overflow-x: auto;
-    flex: 1;
-}
+
 
 .content-container {
-    
     flex: 4;
 }
 

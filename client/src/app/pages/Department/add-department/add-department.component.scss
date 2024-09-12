@@ -1,0 +1,361 @@
+
+.title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+
+
+
+    .main-title {
+        padding: 10px 0px;
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+
+        h1 {
+            font-weight: 500;
+        }
+
+        span {
+            color: gray;
+            font-size: 1rem;
+        }
+    }
+
+
+    .add-btn {
+        height: fit-content;
+        padding: 10px 14px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        border: none;
+        border-radius: 10px;
+        background-color: rgb(34, 197, 94);
+        color: white;
+        cursor: pointer;
+    }
+}
+
+
+
+
+
+
+//////////////////    Dialog Components //////////////////////
+
+
+.custom-modal-content{
+    background-color: #212529;
+    position: fixed;
+    width: 350px;
+    left: 40%;
+    color: black;
+    padding: 10px;
+    border-radius: 5px;
+
+
+    .custom-modal-header {
+        display: flex;
+        padding: 5px 2px;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+        color: white;
+
+
+        button {
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+
+
+            i {
+                font-size: 1.2rem;
+                font-weight: 600;
+                color: white;
+            }
+        }
+    }
+
+
+    .custom-modal-body {
+        display: flex;
+        flex-direction: column;
+        margin: .5rem;
+        gap: 10px;
+
+
+
+        label {
+            font-size: .9rem;
+            font-weight: 500;
+            color: white;
+        }
+
+
+        input {
+            border: none;
+            outline : none;
+            padding: 10px 12px;
+            background-color: #6c757d;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+    }
+
+
+    .custom-modal-footer {
+        display: flex;
+        margin-top: 1.5rem;
+        justify-content: end;
+        margin-right: 8px;
+        gap: 10px;
+    }
+
+    button {
+        border: none;
+        padding: 6px 20px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .cancel-button {
+        background-color: #6c757d;
+        color : white
+    }
+
+    .save-button {
+        background-color: rgb(34, 197, 94);
+        color: white;
+    }
+}
+
+/////////////////////      Pagination Dropwdown
+
+.page-section {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-left: 20px;
+}
+
+
+.dropdown-btn {
+    width: fit-content;
+    margin-top: .5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    background-color: #212529;
+    color: white;
+    padding: 8px 12px;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    outline: none;
+
+    i {
+        font-size: 1.2rem;
+    }
+}
+
+
+
+//////////////////////////    Table component ////////////////////
+
+.table-container {
+    width: 100%;
+    padding: 20px;
+    
+}
+
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    
+    th, td {
+        padding: 12px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #212529;
+        color: #ccc;
+        
+    }
+
+    
+
+    td {
+        color: #f1f1f1;
+        border-bottom: 1px solid #444;
+    }
+
+    i {
+        color: #aaa; /* For the ellipsis icon */
+        cursor: pointer;
+    }
+
+    .even {
+        background-color: #262f37;
+    }
+
+    .odd {
+        background-color: #212529;
+    }
+
+    .action-section {
+        width: 100px;
+    }
+
+}
+
+
+///////////////////    Edit Dropdown /////////////////
+
+.edit-modal {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    position: absolute;
+    background-color: black;
+    right: 6.6rem;
+    padding: 10px 50px;
+    font-size: 1rem;
+    bottom : 14rem;
+}
+
+
+.edit-section {
+    display: flex;
+    gap: 15px;
+
+    .icons {
+        background-color: black;
+        padding: 4px 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+}
+
+.delete-icons {
+    padding: 4px 10px;
+    background-color: #3e556c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+svg {
+    width: 15px;
+    height: 15px;
+}
+
+
+
+.custom-edit-modal-content {
+    background-color: #212529;
+    position: fixed;
+    width: 350px;
+    top: 30%;
+    left: 40%;
+    color: black;
+    padding: 10px;
+    border-radius: 5px;
+
+
+    .custom-modal-header {
+        display: flex;
+        padding: 5px 2px;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+        color: white;
+
+
+        button {
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+
+
+            i {
+                font-size: 1.2rem;
+                font-weight: 600;
+                color: white;
+            }
+        }
+    }
+
+
+    .custom-modal-body {
+        display: flex;
+        flex-direction: column;
+        margin: .5rem;
+        gap: 10px;
+
+
+
+        label {
+            font-size: .9rem;
+            font-weight: 500;
+            color: white;
+        }
+
+
+        input {
+            border: none;
+            outline : none;
+            padding: 10px 12px;
+            background-color: #6c757d;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+    }
+
+
+    .custom-modal-footer {
+        display: flex;
+        margin-top: 1.5rem;
+        justify-content: end;
+        margin-right: 8px;
+        gap: 10px;
+    }
+
+    button {
+        border: none;
+        padding: 6px 20px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+
+    .cancel-button {
+        background-color: #6c757d;
+        color : white
+    }
+
+    .save-button {
+        background-color: rgb(34, 197, 94);
+        color: white;
+    }
+
+
+}

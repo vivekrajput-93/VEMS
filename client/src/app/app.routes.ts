@@ -4,6 +4,7 @@ import { RegisterComponent } from '../app/components/auth/register/register.comp
 import { AdminComponent } from './pages/Admin/admin/admin.component';
 import { CreateEmployeeComponent } from './pages/Employees/create-employee/create-employee.component';
 import { EditEmployeeComponent } from './pages/Employees/edit-employee/edit-employee.component';
+import { AddDepartmentComponent } from './pages/Department/add-department/add-department.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -15,6 +16,7 @@ export const routes: Routes = [
         children: [
             { path: 'create-emp', component: CreateEmployeeComponent },
             { path: 'edit-emp', component: EditEmployeeComponent },
+            { path : 'add-dept', component : AddDepartmentComponent}
             
         
         ]

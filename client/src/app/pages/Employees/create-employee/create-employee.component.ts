@@ -84,6 +84,9 @@ export class CreateEmployeeComponent {
         console.log('There is an error in registration', err);
       }
     });
+    setTimeout(() => {
+      this.getEmployee();
+    }, 100)
 
     this.closeDialog();
   }

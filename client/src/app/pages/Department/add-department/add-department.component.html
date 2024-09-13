@@ -33,7 +33,7 @@
     <!-- Pagination Section -->
 
     <div class="page-section">
-        <label>Status</label>
+        <label>Show</label>
         <div class="dropdown">
             <select class="dropdown-btn">
                 <option value="">10</option>
@@ -86,25 +86,25 @@
                                 </svg>
 
                             </span>
-                                        <!-- Custom Modal -->
-            <div class="custom-modal" *ngIf="isOpen">
-                <div class="custom-edit-modal-content">
-                    <div class="custom-modal-header">
-                        <h2>Edit Deparmtent</h2>
-                        <button (click)="closeEditDialog()"><i class="pi pi-times"></i></button>
-                    </div>
-                    <div class="custom-modal-body">
-                        <label for="username" class="">Department Name:</label>
-                        <input id="username" [(ngModel)]="editDeptName" autocomplete="off" />
+                            <!-- Custom Modal -->
+                            <div class="custom-modal" *ngIf="isOpen">
+                                <div class="custom-edit-modal-content">
+                                    <div class="custom-modal-header">
+                                        <h2>Edit Deparmtent</h2>
+                                        <button (click)="closeEditDialog()"><i class="pi pi-times"></i></button>
+                                    </div>
+                                    <div class="custom-modal-body">
+                                        <label for="username" class="">Department Name:</label>
+                                        <input id="username" [(ngModel)]="editDeptName" autocomplete="off" />
 
-                    </div>
-                    <div class="custom-modal-footer">
-                        <button class="cancel-button" (click)="closeDialog()">Cancel</button>
-                        <button class="save-button" (click)="editChanges(department._id)">Save</button>
-                    </div>
-                </div>
-                <div class="custom-modal-backdrop" (click)="closeDialog()"></div>
-            </div>
+                                    </div>
+                                    <div class="custom-modal-footer">
+                                        <button class="cancel-button" (click)="closeEditDialog()">Cancel</button>
+                                        <button class="save-button" (click)="editChanges(department._id)">Save</button>
+                                    </div>
+                                </div>
+                                <div class="custom-modal-backdrop" (click)="closeDialog()"></div>
+                            </div>
 
                         </td>
                     </tr>

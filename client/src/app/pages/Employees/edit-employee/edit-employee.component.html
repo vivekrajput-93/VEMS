@@ -1,1 +1,88 @@
-<p>edit-employee works!</p>
+<div class="main-section">
+
+    <div class="header-section">
+        <div class="main-title">
+            <h1>Employee</h1>
+            <span>Employee / Dashboard</span>
+
+        </div>
+        <!-- Custom Modal section-->
+        <button class="edit-btn" (click)="showDialog()"><i class="pi pi-plus"></i> Add Employee</button>
+        <div class="modal-overlay" *ngIf="isDialog">
+            <div class="custom-modal">
+                <div class="custom-modal-content">
+                    <div class="modal-header">
+                        <span>Edit Employee</span>
+                        <i class="pi pi-times" (click)="closeDialog()"></i>
+                    </div>
+                    <div class="modal-content">
+                        <div class="input-container">
+                            <div><label>First Name *</label>
+                                <input type="text" [(ngModel)]="fisrtName">
+                            </div>
+                            <div><label>Last Name</label>
+                                <input type="text" [(ngModel)]="lastName">
+                            </div>
+                        </div>
+                        <div class="input-container">
+                            <div><label>Email *</label>
+                                <input type="email" [(ngModel)]="email">
+                            </div>
+                            <div><label>Department Name *</label>
+                                <select class="dropdown-btn" [(ngModel)]="departmentId">
+                                    <option value="" disabled>Select Department</option>
+                                    <option value={{dept._id}} *ngFor="let dept of departments" >{{dept.name}}</option>
+    
+                                </select>
+                            </div>
+                        </div>
+                        <div class="input-container">
+                            <div><label>Position</label>
+                                <input type="text" [(ngModel)]="position">
+                            </div>
+                            <div><label>Phone</label>
+                                <input type="tel" [(ngModel)]="phone">
+                            </div>
+                        </div>
+                        <div class="input-container">
+                            <div><label>Status</label>
+                                <select class="dropdown-btn" [(ngModel)]="status">
+                                    <option value="" disabled>Select Status</option>
+                                    <option value="0">Active</option>
+                                    <option value="1">On Leave</option>
+    
+                                </select>
+                            </div>
+                            <div><label >Hired Date</label>
+                                <input type="date" [(ngModel)]="hiredDate">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button (click)="closeDialog()">Cancel</button>
+                        <button (click)="createEmp()">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="pagination-section">
+        <span>Show</span>
+        <select >
+            <option value="">10</option>
+            <option value="">25</option>
+            <option value="">50</option>
+            <option value="">100</option>
+        </select>
+        <span>entries</span>
+    </div>
+
+
+    <!------------------- Table Section ---------------------->
+
+    <div class="table-container">
+        <h2>Table</h2>
+    </div>
+</div>

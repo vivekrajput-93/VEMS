@@ -194,7 +194,9 @@
         
     }
 
-    
+    table, th, tr, td {
+        border: 1px solid gray !important;
+    }
 
     td {
         color: #f1f1f1;

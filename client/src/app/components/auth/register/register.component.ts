@@ -37,6 +37,7 @@ export class RegisterComponent {
     this.authService.register(user).subscribe({
       next: (response: any) => {
         console.log("User registered successfully", response);
+        this.router.navigate(['/login'])
         if(response.success == true) {
           this.messageService.add({
             severity: 'success',
@@ -44,7 +45,6 @@ export class RegisterComponent {
             detail: 'Welcome to the admin dashboard!'
           });
         }
-        this.router.navigate(['/login'])
       },
       error: (err: any) => {
         console.log('There is an error in registration', err);

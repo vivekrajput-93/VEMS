@@ -33,7 +33,7 @@ router.put("/auth/update-dept/:id", updateDepartmentController)
 
 router.post("/auth/createEmployee",  createEmployeeController)
 
-router.get("/auth/get-employee", getEmployeeController)
+router.get("/auth/get-emp", getEmployeeController)
 
 
 module.exports = router;

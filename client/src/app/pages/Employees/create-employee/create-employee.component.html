@@ -1,62 +1,165 @@
 <div class="main-section">
-    <div class="form-container">
-        <h2>Employee Creation</h2>
+    <div class="header-section">
+        <div class="main-title">
+            <h1>Employee</h1>
+            <span>Employee / Dashboard</span>
+        </div>
+        <!-- Custom Modal section -->
+        <button class="edit-btn" (click)="showDialog()"><i class="pi pi-plus"></i> Add Employee</button>
 
-        <div class="form-section">
-            <div class="first-input-container input">
-                <div>
-                    <label >First Name</label>
-                    <input type="text" placeholder="John..." [(ngModel)]='fisrtName' >
+        <div class="modal-overlay" *ngIf="isDialog">
+            <div class="custom-modal">
+                <div class="custom-modal-content">
+                    <div class="modal-header">
+                        <span>Add Employee</span>
+                        <i class="pi pi-times" (click)="closeDialog()"></i>
+                    </div>
+                    <form #employeeForm="ngForm" (ngSubmit)="createEmp()" class="modal-content">
+                        <div class="input-container">
+                            <div>
+                                <label>First Name *</label>
+                                <input type="text" [(ngModel)]="firstName" name="firstName" required>
+                            </div>
+                            <div>
+                                <label>Last Name</label>
+                                <input type="text" [(ngModel)]="lastName" name="lastName">
+                            </div>
+                        </div>
+                        <div class="input-container">
+                            <div>
+                                <label>Email *</label>
+                                <input type="email" [(ngModel)]="email" name="email" required>
+                            </div>
+                            <div>
+                                <label>Department Name *</label>
+                                <select class="dropdown-btn" [(ngModel)]="departmentId" name="departmentId" required>
+                                    <option value="" disabled>Select Department</option>
+                                    <option *ngFor="let dept of departments" [value]="dept._id">{{dept.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="input-container">
+                            <div>
+                                <label>Position</label>
+                                <input type="text" [(ngModel)]="position" name="position">
+                            </div>
+                            <div>
+                                <label>Phone</label>
+                                <input type="tel" [(ngModel)]="phone" name="phone">
+                            </div>
+                        </div>
+                        <div class="input-container">
+                            <div>
+                                <label>Status</label>
+                                <select class="dropdown-btn" [(ngModel)]="status" name="status">
+                                    <option value="" disabled>Select Status</option>
+                                    <option value="0">Active</option>
+                                    <option value="1">On Leave</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label>Hired Date</label>
+                                <input type="date" [(ngModel)]="hiredDate" name="hiredDate">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button (click)="closeDialog()">Cancel</button>
+                            <button type="submit" [disabled]="!employeeForm.form.valid">Save</button>
+                        </div>
+                    </form>
                 </div>
-                <div>
-                    <label >Last Name</label>
-                    <input type="text" placeholder="Ex:- Doe..." [(ngModel)]="lastName">
-                </div>
-                
             </div>
-            <div class="second-input-container input">
-                <div>
-                    <label >Email</label>
-                    <input type="email" placeholder="john12@example.com..." [(ngModel)]="email" >
-                </div>
-                <div>
-                    <label>Position</label>
-                    <input type="text" placeholder="Sr. Developer...." [(ngModel)]="position" >
-                </div>
-                <div>
-                    <label >Department Id</label>
-                    <input type="text" placeholder="Ex: UI/UX Design..." [(ngModel)]="departmentId" >
-                </div>
-            </div>
-            <div class="third-input-container input">
-                <div>
-                    <label >Hired Date</label>
-                    <input type="date" [(ngModel)]="hiredDate" >
-                </div>
-                <div>
-                    <label >Phone</label>
-                    <input type="tel" placeholder="679-231-6789" [(ngModel)]="phone" >
-                </div>
-            </div>
-            <div class="fourth-input-container ">
-                <label>Status</label>
-                <div class="dropdown">
-                    <select class="dropdown-btn" [(ngModel)]="status">
-                      <option value="">Select a status</option>
-                      <option value="Active">Active</option>
-                      <option value="On Leave">On Leave</option>
-                      
-                    </select>
-                    
-                  </div>
-                  
-            </div>
-            <button>Create</button>
         </div>
     </div>
-</div>
 
-<div>
-    {{hiredDate}}
-    {{status}}
-</div>
+    <div class="pagination-section">
+        <span>Show</span>
+        <select>
+            <option value="">10</option>
+            <option value="">25</option>
+            <option value="">50</option>
+            <option value="">100</option>
+        </select>
+        <span>entries</span>
+    </div>
+
+    <div class="table-section"></div>
+        <div class="dropdown">
+
+        </div>
+        <div class="table-container">
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>FirstName</th>
+                        <th>Last Name</th>
+                        <th>Position</th>
+                        <th>Status</th>
+                        <th>Hired Date</th>
+                        <th>Phone No</th>
+                        <th>Dept..</th>
+                        <th class="action-section">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let emp of employees, let e=even, let i = index"
+                        [ngClass]="e ? 'even' : 'odd'">
+                        <td hidden>{{e ? "odd" : "even"}}</td>
+                        <td>{{i+1}}</td>
+                        <td>
+                            {{ emp.firstName }}
+                        </td>
+                        <td>{{emp.lastName}}</td>
+                        <td>{{emp.position}}</td>
+                        <td>{{emp.status}}</td>
+                        <td>{{emp.hiredDate | date : "shortDate"}}</td>
+                        <td>{{emp.phone}}</td>
+                        <td>{{emp.departmentName}}</td>
+                        
+
+                        <td class="edit-section">
+                            <span class="icons" >
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="size-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
+                                </svg>
+                            </span>
+                            <span class="delete-icons">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="size-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+                                </svg>
+
+                            </span>
+                            <!-- Custom Modal -->
+                            <!-- <div class="custom-modal" *ngIf="isOpen">
+                                <div class="custom-edit-modal-content">
+                                    <div class="custom-modal-header">
+                                        <h2>Edit Deparmtent</h2>
+                                        <button (click)="closeEditDialog()"><i class="pi pi-times"></i></button>
+                                    </div>
+                                    <div class="custom-modal-body">
+                                        <label for="username" class="">Department Name:</label>
+                                        <input id="username" [(ngModel)]="editDeptName" autocomplete="off" />
+
+                                    </div>
+                                    <div class="custom-modal-footer">
+                                        <button class="cancel-button" (click)="closeEditDialog()">Cancel</button>
+                                        <button class="save-button" (click)="editChanges(department._id)">Save</button>
+                                    </div>
+                                </div>
+                                <div class="custom-modal-backdrop" (click)="closeDialog()"></div>
+                            </div> -->
+
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>

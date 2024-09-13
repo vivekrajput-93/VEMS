@@ -29,20 +29,15 @@ export class LoginComponent {
     this.authService.login(this.userEmail, this.userPassword).subscribe({
       next: (response: any) => {
         console.log("Login successful", response);
-        this.messageService.add({
-          severity: 'success',
-          summary: 'Login Successful',
-          detail: 'Welcome to the admin dashboard!'
-        });
-        
-        if (response.success === false) {
+        { this.authService.userValue?.user?.role === 1 ? this.router.navigate(['/admin']) : this.router.navigate(['/user-dashboard']);}
+        if (response) {
           this.messageService.add({
             severity: 'error',
             detail: 'Invalid Password'
           });
           return;
         }
-        { this.authService.userValue?.user?.role === 1 ? this.router.navigate(['/admin']) : this.router.navigate(['/user-dashboard']);}
+        
       },
       error: (err: any) => {
         console.log('Error in login', err);

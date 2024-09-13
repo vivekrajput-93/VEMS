@@ -14,7 +14,7 @@ export interface Employee {
     position : string,
     status : string,
     phone : number,
-    departmentId : number,
+    departmentId : string,
     hiredDate : number
 
 }

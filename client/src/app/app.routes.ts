@@ -5,10 +5,12 @@ import { AdminComponent } from './pages/Admin/admin/admin.component';
 import { CreateEmployeeComponent } from './pages/Employees/create-employee/create-employee.component';
 import { EditEmployeeComponent } from './pages/Employees/edit-employee/edit-employee.component';
 import { AddDepartmentComponent } from './pages/Department/add-department/add-department.component';
+import { DashboardComponent } from './pages/User/dashboard/dashboard.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
     { path: 'login', component: LoginComponent },
+    { path : "user-dashboard", component : DashboardComponent},
     { path: 'register', component: RegisterComponent },
     {
         path: 'admin',

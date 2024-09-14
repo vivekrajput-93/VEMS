@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const {registerController, loginController, testController} = require("../controllers/authController");
 const { requiredSignIn, isAdmin } = require("../middlewares/authMiddleware");
-const { createEmployeeController, getEmployeeController } = require("../controllers/EmployeeController");
+const { createEmployeeController, getEmployeeController, deleteEmployeeController } = require("../controllers/EmployeeController");
 const { createDepartmentController, getDepartmentController, deleteDepartmentController, updateDepartmentController } = require("../controllers/DepartmentController");
 
 ///////////////////////         Auth Routes ////////////////////////////
@@ -34,6 +34,8 @@ router.put("/auth/update-dept/:id", updateDepartmentController)
 router.post("/auth/createEmployee",  createEmployeeController)
 
 router.get("/auth/get-emp", getEmployeeController)
+
+router.delete("/auth/delete-emp/:id", deleteEmployeeController)
 
 
 module.exports = router;

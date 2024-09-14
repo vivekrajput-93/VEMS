@@ -19,5 +19,8 @@ export class EmployeeService {
     return this.http.get(`${environment.apiUrl}/api/auth/get-emp`)
   }
 
+  deleteEmployee(id : number) {
+    return this.http.delete(`${environment.apiUrl}/api/auth/delete-emp/${id}`)
+  }
   
 }

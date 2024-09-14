@@ -80,9 +80,26 @@ const getEmployeeController = async(req, res) => {
 }
 
 
+const deleteEmployeeController = async(req, res) => {
+  try {
+    const {id} = req.params
+    const employee = await Employee.findByIdAndDelete(id);
+    return res.status(200).send({
+      success : true,
+      message : "Employee Deleted Successfully"
+    })
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success : false,
+      message : "Error in Employee Controller",
+      err : error
+    })
+  }
+}
 
 
 
 module.exports = {
-    createEmployeeController, getEmployeeController
+    createEmployeeController, getEmployeeController, deleteEmployeeController
 }

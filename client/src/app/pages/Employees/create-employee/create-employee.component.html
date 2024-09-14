@@ -74,11 +74,11 @@
 
     <div class="pagination-section">
         <span>Show</span>
-        <select>
-            <option value="">10</option>
-            <option value="">25</option>
-            <option value="">50</option>
-            <option value="">100</option>
+        <select [(ngModel)]="entriesPerPage" (change)="onEntriesPerPageChange()">
+            <option [value]="5">5</option>
+            <option [value]="10">10</option>
+            <option [value]="15">15</option>
+            <option [value]="20">20</option>
         </select>
         <span>entries</span>
     </div>
@@ -98,15 +98,15 @@
                         <th>Status</th>
                         <th>Hired Date</th>
                         <th>Phone No</th>
-                        <th>Dept..</th>
+                        <th>Deptartment</th>
                         <th class="action-section">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let emp of employees, let e=even, let i = index"
+                    <tr *ngFor="let emp of paginatedEmployees, let e=even, let i = index"
                         [ngClass]="e ? 'even' : 'odd'">
                         <td hidden>{{e ? "odd" : "even"}}</td>
-                        <td>{{i+1}}</td>
+                        <td>{{ (currentPage - 1) * entriesPerPage + i + 1 }}</td>
                         <td>
                             {{ emp.firstName }}
                         </td>
@@ -126,7 +126,7 @@
                                         d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
                                 </svg>
                             </span>
-                            <span class="delete-icons">
+                            <span class="delete-icons" (click)="deleteEmployee(emp._id)">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="size-6">
                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -160,6 +160,11 @@
                 </tbody>
             </table>
 
+            <div class="pagination-controls">
+                <button (click)="prevPage()" [disabled]="currentPage === 1"><i class="pi pi-angle-left"></i></button>
+                <span>Page {{currentPage}} of {{totalPages}}</span>
+                <button (click)="nextPage()" [disabled]="currentPage === totalPages"><i class="pi pi-angle-right"></i></button>
+            </div>
 
         </div>
     </div>

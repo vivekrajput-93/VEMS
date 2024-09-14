@@ -49,6 +49,13 @@ export class CreateEmployeeComponent {
   employees : any[] = []
 
 
+  ///////// Pagination /////////////
+  paginatedEmployees: any[] = [];
+  entriesPerPage = 5;
+  currentPage = 1;
+  totalPages = 1;
+
+
   //////////////////   fetching department name /////////////////////////
 
   getDepartment() {
@@ -98,10 +105,47 @@ export class CreateEmployeeComponent {
         const department = this.departments.find(dept => dept._id === emp.departmentId);
         return {
           ...emp,
-          departmentName: department ? department.name : 'Unknown' 
+          departmentName: department ? department.name : 'Unknown'
         };
       });
+      this.updatePagination();
     });
+  }
+
+
+  updatePagination() {
+    this.totalPages = Math.ceil(this.employees.length / this.entriesPerPage);
+    const startIndex = (this.currentPage - 1) * this.entriesPerPage;
+    console.log("start", startIndex)
+    const endIndex = startIndex + this.entriesPerPage;
+    console.log("end", endIndex)
+    this.paginatedEmployees = this.employees.slice(startIndex, endIndex);
+  }
+
+
+
+  onEntriesPerPageChange() {
+    this.currentPage - 1;
+    this.updatePagination()
+  }
+
+  nextPage() {
+    if(this.currentPage < this.totalPages) {
+      this.currentPage++;
+      this.updatePagination()
+    }
+  }
+
+  prevPage() {
+    if(this.currentPage > 1) {
+      this.currentPage--;
+      this.updatePagination()
+    }
+  }
+
+  deleteEmployee(id : any) {
+    this.employeeService.deleteEmployee(id).subscribe();
+    this.getEmployee()
   }
 
 

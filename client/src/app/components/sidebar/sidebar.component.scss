@@ -1,12 +1,15 @@
 
 .main-container {
+    overflow-y: auto;
+    overflow-x: auto;
     display: flex;
     flex-direction: column;
     background-color: #212529;
-    height: fit-content;
-    padding: 10px 12px;
-    gap: 1rem;
-    // height: 100vh;
+    padding: 10px 8px;
+    height: 100vh;
+    // height: 100%;
+    width: 16vw; 
+    
 }
 
 ul span {
@@ -21,7 +24,8 @@ ul span {
 ul  {
     display: flex;
     flex-direction: column;
-    gap: .8rem;
+    gap: 2rem;
+    margin-top: 1rem;
 }
 
 ul li {
@@ -29,13 +33,33 @@ ul li {
     gap: 10px;
     align-items: center;
     margin-left: .5rem;
+
+    
     
 
     a {
-        color: white;
+        color: gray;
         font-weight: 400 ;
         font-size: 1rem;
     }
+
+    a:hover {
+        color: white;
+    }
+
+    i {
+        color: gray;
+
+    }
+
+
+
+
+}
+
+
+li:hover {
+    color : white;
 }
 
 

@@ -20,7 +20,11 @@ export class EmployeeService {
   }
 
   deleteEmployee(id : number) {
-    return this.http.delete(`${environment.apiUrl}/api/auth/delete-emp/${id}`)
+    return this.http.delete(`${environment.apiUrl}/api/auth/delete-emp/${id}`);
+  }
+
+  updateEmployee(id : number, employee :any ) {
+    return this.http.put(`${environment.apiUrl}/api/auth/update-emp/${id}`, employee)
   }
   
 }

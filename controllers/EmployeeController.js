@@ -3,7 +3,6 @@ const Employee = require("../models/empolyeeModel");
 const createEmployeeController = async (req, res) => {
   try {
     const {
-      
       firstName,
       lastName,
       email,
@@ -14,7 +13,6 @@ const createEmployeeController = async (req, res) => {
       position,
     } = req.body;
     switch (true) {
-
       case !firstName:
         return res.status(500).send({ error: "First Name is required !" });
       case !lastName:
@@ -43,7 +41,16 @@ const createEmployeeController = async (req, res) => {
       hiredDate,
     };
 
-    const employees = new Employee({firstName, lastName, email, position, status, phone, departmentId, hiredDate});
+    const employees = new Employee({
+      firstName,
+      lastName,
+      email,
+      position,
+      status,
+      phone,
+      departmentId,
+      hiredDate,
+    });
     await employees.save();
     res.status(200).send({
       success: true,
@@ -60,46 +67,78 @@ const createEmployeeController = async (req, res) => {
   }
 };
 
-
-const getEmployeeController = async(req, res) => {
+const getEmployeeController = async (req, res) => {
   try {
     const employee = await Employee.find({});
     res.status(200).send({
-      success : true,
-      message : "Employee fetched successfully",
-      employee
-    })
+      success: true,
+      message: "Employee fetched successfully",
+      employee,
+    });
   } catch (error) {
     console.log(error);
     res.status(500).send({
-      success : false,
-      message : "Error in getting employee",
-      err : error
-    })
+      success: false,
+      message: "Error in getting employee",
+      err: error,
+    });
   }
-}
+};
 
-
-const deleteEmployeeController = async(req, res) => {
+const deleteEmployeeController = async (req, res) => {
   try {
-    const {id} = req.params
+    const { id } = req.params;
     const employee = await Employee.findByIdAndDelete(id);
     return res.status(200).send({
-      success : true,
-      message : "Employee Deleted Successfully"
-    })
+      success: true,
+      message: "Employee Deleted Successfully",
+    });
   } catch (error) {
     console.log(error);
     res.status(500).send({
-      success : false,
-      message : "Error in Employee Controller",
-      err : error
-    })
+      success: false,
+      message: "Error in Employee Controller",
+      err: error,
+    });
   }
-}
+};
 
-
+const updateEmployeeController = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const {
+      firstName,
+      lastName,
+      email,
+      position,
+      phone,
+      hiredDate,
+      departmentId,
+      status,
+    } = req.body;
+    const employees = await Employee.findByIdAndUpdate(
+       id ,
+      { firstName, lastName, email, position, hiredDate, status, departmentId },
+      { new: true }
+    );
+    return res.status(200).send({
+      success: true,
+      message: "Updated Employee Successfully",
+      employees,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Error in Employee Controller",
+      err: error,
+    });
+  }
+};
 
 module.exports = {
-    createEmployeeController, getEmployeeController, deleteEmployeeController
-}
+  createEmployeeController,
+  getEmployeeController,
+  deleteEmployeeController,
+  updateEmployeeController,
+};

@@ -49,6 +49,45 @@ export class CreateEmployeeComponent {
   employees : any[] = []
 
 
+  //////////////   edit modal ////
+  editFirstName = "";
+  editLastName = "";
+  editEmail = "";
+  editPhone = 0;
+  editStatus = "";
+  editDepartmentId = "";
+  editPosition = "";
+  editHiredDate = 0;
+
+
+
+  isOpen = false;
+
+  ngOnInit() : void {
+    this.getDepartment();
+    this.getEmployee();
+  }
+
+  closeEditDilog() {
+    this.isOpen= false;
+  }
+
+
+  showEditedDilog(employee : any) {
+    this.isOpen = true;
+    this.editFirstName = employee.firstName;
+    this.editLastName = employee.lastName;
+    this.editEmail = employee.email;
+    this.editPhone = employee.phone;
+    this.editPosition = employee.position;
+    this.editHiredDate = employee.hiredDate;
+    this.editDepartmentId = employee.departmentId;
+    this.editStatus = employee.status;
+  }
+
+  
+
+
   ///////// Pagination /////////////
   paginatedEmployees: any[] = [];
   entriesPerPage = 5;
@@ -61,13 +100,8 @@ export class CreateEmployeeComponent {
   getDepartment() {
     this.departmentService.getDepartment().subscribe((data : any) => {
       this.departments = data.department;
-      console.log(this.departments)
+      console.log(this.departments, 'ijfr')
     })
-  }
-
-  ngOnInit() : void {
-    this.getDepartment();
-    this.getEmployee();
   }
 
 
@@ -148,6 +182,31 @@ export class CreateEmployeeComponent {
     this.getEmployee()
   }
 
+
+
+  editChanges(id:number, employee : any) {
+    const updatedEmployee = {
+      firstName: this.editFirstName,
+      lastName: this.editLastName,
+      email: this.editEmail,
+      phone: this.editPhone,
+      status: this.editStatus,
+      departmentId: this.editDepartmentId,
+      position: this.editPosition,
+      hiredDate: this.editHiredDate,
+    };
+
+    this.employeeService.updateEmployee(id , updatedEmployee,).subscribe({
+      next: (response: any) => {
+        console.log('Employee updated successfully', response);
+        this.getEmployee(); 
+        this.closeEditDilog()
+      },
+      error: (err: any) => {
+        console.log('Error updating employee', err);
+      }
+    });
+  }
 
 
 }

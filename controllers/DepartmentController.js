@@ -79,6 +79,7 @@ const updateDepartmentController = async (req, res) => {
   }
 };
 
+
 //////////////////////////   Delete Controller ///////////////////////////
 
 const deleteDepartmentController = async (req, res) => {

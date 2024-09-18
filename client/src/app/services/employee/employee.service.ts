@@ -2,29 +2,32 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Employee } from '../../models/auth';
 import { environment } from '../../../environments/environment';
+import { ApiService } from '../apiService.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeeService {
 
-  constructor(private http : HttpClient) { }
 
 
-  createEmployee(employee : Employee ) {
-   return this.http.post(`${environment.apiUrl}/api/auth/createEmployee`, employee)
+  constructor(private apiService: ApiService, private http : HttpClient) { }
+
+  createEmployee(employee: Employee,) {
+    return this.apiService.createData<Employee>('createEmployee', employee);
   }
+
 
   getEmployee() {
-    return this.http.get(`${environment.apiUrl}/api/auth/get-emp`)
+    return this.apiService.getData<Employee[]>('get-emp');
   }
 
-  deleteEmployee(id : number) {
-    return this.http.delete(`${environment.apiUrl}/api/auth/delete-emp/${id}`);
+  deleteEmployee(id: number) {
+    return this.apiService.deleteData('delete-emp', id);
   }
 
-  updateEmployee(id : number, employee :any ) {
-    return this.http.put(`${environment.apiUrl}/api/auth/update-emp/${id}`, employee)
+  updateEmployee(id: number, employee: Employee) {
+    return this.apiService.updateData<Employee>('update-emp', id, employee);
   }
   
 }

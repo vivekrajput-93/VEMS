@@ -4,6 +4,7 @@ const {registerController, loginController, testController} = require("../contro
 const { requiredSignIn, isAdmin } = require("../middlewares/authMiddleware");
 const { createEmployeeController, getEmployeeController, deleteEmployeeController, updateEmployeeController } = require("../controllers/EmployeeController");
 const { createDepartmentController, getDepartmentController, deleteDepartmentController, updateDepartmentController } = require("../controllers/DepartmentController");
+const { generateLeaveController } = require("../controllers/LeaveController");
 
 ///////////////////////         Auth Routes ////////////////////////////
 
@@ -38,6 +39,11 @@ router.get("/auth/get-emp", getEmployeeController)
 router.delete("/auth/delete-emp/:id", deleteEmployeeController)
 
 router.put("/auth/update-emp/:id", updateEmployeeController)
+
+
+////////////////////////       Leave Routes /////////////////////////////
+
+router.post("/auth/create-leave", generateLeaveController)
 
 
 module.exports = router;

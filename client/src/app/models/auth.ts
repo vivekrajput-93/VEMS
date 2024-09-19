@@ -24,3 +24,14 @@ export interface Employee {
 export interface Department {
     deptName : string
 }
+
+
+export interface Leave {
+    employeeId : string,
+    leaveType : string,
+    from : number,
+    to : number,
+    reason : string,
+    noOfDays : string,
+    status : string
+}

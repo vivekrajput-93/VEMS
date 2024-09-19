@@ -1,0 +1,124 @@
+<div class="main-container">
+    <div class="header-container">
+        <div class="main-heading">
+            <h2>Leave</h2>
+            <span>Dashboard / Leaves</span>
+        </div>
+
+        <div class="custom-add-modal">
+            <button class="add-leave-btn" (click)="showDialog()"><i class="pi pi-plus"></i>Add Leave</button>
+            <div class="custom-modal" *ngIf="visible">
+                <div class="custom-modal-content">
+                    <div class="custom-modal-header">
+                        <h2>Add Leave</h2>
+                        <button (click)="closeDialog()"><i class="pi pi-times"></i></button>
+                    </div>
+
+                    <div class="custom-modal-body">
+                        <form #leaveForm="ngForm" (ngSubmit)="createData()">
+                            <label for="leaveName">Employee Name</label>
+                            <input id="leaveName" name="leaveName" [(ngModel)]="leaveName" required
+                                pattern="^[A-Za-z ]+$" class="input-field" />
+
+                            <label for="leaveName" class="required">Leave Type</label>
+                            <input id="leaveName" name="leaveName" [(ngModel)]="leaveName" required
+                                pattern="^[A-Za-z ]+$" class="input-field" />
+                            <label for="leaveName">From</label>
+                            <input id="leaveName" name="leaveName" [(ngModel)]="leaveName" required
+                                pattern="^[A-Za-z ]+$" class="input-field" />
+                            <label for="leaveName">To</label>
+                            <input id="leaveName" name="leaveName" [(ngModel)]="leaveName" required
+                                pattern="^[A-Za-z ]+$" class="input-field" />
+                            <label for="leaveName">Reason</label>
+                            <input id="leaveName" name="leaveName" [(ngModel)]="leaveName" required
+                                pattern="^[A-Za-z ]+$" class="input-field" />
+                            <label for="leaveName">No of Days</label>
+                            <input id="leaveName" name="leaveName" [(ngModel)]="leaveName" required
+                                pattern="^[A-Za-z ]+$" class="input-field" />
+                            <label for="leaveName">Status</label>
+                            <input id="leaveName" name="leaveName" [(ngModel)]="leaveName" required
+                                pattern="^[A-Za-z ]+$" class="input-field" />
+                            <!-- Validation messages
+                             <div *ngIf="leaveName.invalid &&(leaveName.dirty || leaveName.touched)">
+                                <small *ngIf="leaveName.errors?.['required']" class="text-danger">
+                                    Department name is required.
+                                </small>
+                                <small *ngIf="leaveName.errors?.['pattern']" class="text-danger">
+                                    Only alphabets are allowed.
+                                </small>
+                            </div>  -->
+
+                            <div class="custom-modal-footer">
+                                <button type="button" class="cancel-button" (click)="closeDialog()">
+                                    Cancel
+                                </button>
+                                <button type="submit" class="save-button" [disabled]="leaveForm.invalid">
+                                    Save
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="custom-modal-backdrop" (click)="closeDialog()"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="info-section">
+        <div>
+            <h3>Total Presents</h3>
+            <p>12 / 60</p>
+        </div>
+        <div>
+            <h3>Planned Leaves</h3>
+            <p>8 <span>Today</span></p>
+        </div>
+        <div>
+            <h3>Unplanned Leaves</h3>
+            <p>8 <span>Today</span></p>
+        </div>
+        <div>
+            <h3>Pending Request</h3>
+            <p>12</p>
+        </div>
+    </div>
+
+    <div class="search-container">
+        <input type="text" placeholder="Employee Name" />
+        <select>
+            <option class="disable-value">
+                -- Select <span>Leave Type</span> --
+            </option>
+            <option>Annual Leave</option>
+            <option>Sick Leave</option>
+            <option>Casual Leave</option>
+        </select>
+        <select>
+            <option class="disable-value">
+                -- Select <span>Leave Status</span> --
+            </option>
+            <option>Pending</option>
+            <option>Approved</option>
+            <option>Rejected</option>
+        </select>
+        <input type="date" placeholder="From" />
+        <input type="date" />
+        <button>Search</button>
+    </div>
+
+    <div class="pagination-section">
+        <span>Show</span>
+        <select>
+            <option [value]="5">5</option>
+            <option [value]="10">10</option>
+            <option [value]="15">15</option>
+            <option [value]="20">20</option>
+        </select>
+        <span>entries</span>
+    </div>
+
+
+
+</div>

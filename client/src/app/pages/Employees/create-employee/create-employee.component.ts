@@ -4,6 +4,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { DepartmentService } from '../../../services/department/department.service';
 import { Employee } from '../../../models/auth';
 import { EmployeeService } from '../../../services/employee/employee.service';
+import { apiUrl } from '../../../constants';
 
 @Component({
   selector: 'app-edit-employee',
@@ -98,10 +99,10 @@ export class CreateEmployeeComponent {
   //////////////////   fetching department name /////////////////////////
 
   getDepartment() {
-    this.departmentService.getDepartment().subscribe((data : any) => {
+    this.departmentService.getData(apiUrl.department.get).subscribe((data: any) => {
       this.departments = data.department;
-      console.log(this.departments, 'ijfr')
-    })
+      console.log(this.departments);
+    });
   }
 
 
@@ -117,7 +118,7 @@ export class CreateEmployeeComponent {
       departmentId: this.departmentId
     };
   
-    this.employeeService.createEmployee(employee).subscribe({
+    this.employeeService.createData(employee, apiUrl.employee.create).subscribe({
       next: (response: any) => {
         console.log("User registered successfully", response);
       },
@@ -134,7 +135,7 @@ export class CreateEmployeeComponent {
 
 
   getEmployee() {
-    this.employeeService.getEmployee().subscribe((data: any) => {
+    this.employeeService.getData(apiUrl.employee.get).subscribe((data: any) => {
       this.employees = data.employee.map((emp: any) => {
         const department = this.departments.find(dept => dept._id === emp.departmentId);
         return {
@@ -177,8 +178,8 @@ export class CreateEmployeeComponent {
     }
   }
 
-  deleteEmployee(id : any) {
-    this.employeeService.deleteEmployee(id).subscribe();
+  deleteEmployee(id : any, ) {
+    this.employeeService.deleteData(id, apiUrl.employee.delete).subscribe();
     this.getEmployee()
   }
 
@@ -196,7 +197,7 @@ export class CreateEmployeeComponent {
       hiredDate: this.editHiredDate,
     };
 
-    this.employeeService.updateEmployee(id , updatedEmployee,).subscribe({
+    this.employeeService.updateData(id , updatedEmployee, apiUrl.employee.update).subscribe({
       next: (response: any) => {
         console.log('Employee updated successfully', response);
         this.getEmployee(); 

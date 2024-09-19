@@ -10,24 +10,22 @@ import { ApiService } from '../apiService.service';
 export class EmployeeService {
 
 
+  constructor(private apiService: ApiService, ) { }
 
-  constructor(private apiService: ApiService, private http : HttpClient) { }
-
-  createEmployee(employee: Employee,) {
-    return this.apiService.createData<Employee>('createEmployee', employee);
+  createData(employee: Employee, url: string) {
+    return this.apiService.createData<Employee>(url, employee);
   }
 
-
-  getEmployee() {
-    return this.apiService.getData<Employee[]>('get-emp');
+  getData(url:string) {
+    return this.apiService.getData<Employee[]>(url);
   }
 
-  deleteEmployee(id: number) {
-    return this.apiService.deleteData('delete-emp', id);
+  deleteData(id: number, url:string) {
+    return this.apiService.deleteData(url, id);
   }
 
-  updateEmployee(id: number, employee: Employee) {
-    return this.apiService.updateData<Employee>('update-emp', id, employee);
+  updateData(id: number, employee: Employee, url:string) {
+    return this.apiService.updateData<Employee>(url, id, employee);
   }
   
 }

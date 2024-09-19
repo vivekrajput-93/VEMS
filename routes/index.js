@@ -47,3 +47,4 @@ router.post("/auth/create-leave", generateLeaveController)
 
 
 module.exports = router;
+

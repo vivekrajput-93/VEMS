@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EditEmployeeComponent } from './edit-employee.component';
+import { AdminLeaveComponent } from './admin-leave.component';
 
-describe('EditEmployeeComponent', () => {
-  let component: EditEmployeeComponent;
-  let fixture: ComponentFixture<EditEmployeeComponent>;
+describe('AdminLeaveComponent', () => {
+  let component: AdminLeaveComponent;
+  let fixture: ComponentFixture<AdminLeaveComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [EditEmployeeComponent]
+      imports: [AdminLeaveComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(EditEmployeeComponent);
+    fixture = TestBed.createComponent(AdminLeaveComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

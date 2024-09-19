@@ -7,7 +7,6 @@ import { RegisterComponent } from '../app/components/auth/register/register.comp
 import { AdminComponent } from './pages/Admin/admin/admin.component';
 import { DashboardComponent } from './pages/User/dashboard/dashboard.component';
 import { CreateEmployeeComponent } from './pages/Employees/create-employee/create-employee.component';
-import { EditEmployeeComponent } from './pages/Employees/edit-employee/edit-employee.component';
 import { routes } from './app.routes'; // Import your routes
 
 @Component({

@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { DepartmentService } from '../../../services/department/department.service';
+import { apiUrl } from '../../../constants';
 
 @Component({
   selector: 'app-add-department',
@@ -46,7 +47,7 @@ export class AddDepartmentComponent implements OnInit {
 
   saveChanges(form: NgForm) {
     if (form.valid) {
-      this.departmentService.saveDeprtment(this.deptName).subscribe(
+      this.departmentService.createData(this.deptName, apiUrl.department.create).subscribe(
         (response) => {
           console.log('Department created successfully', response);
           this.deptName = '';
@@ -61,20 +62,20 @@ export class AddDepartmentComponent implements OnInit {
   }
 
   getDepartment() {
-    this.departmentService.getDepartment().subscribe((data: any) => {
+    this.departmentService.getData(apiUrl.department.get).subscribe((data: any) => {
       this.departments = data.department;
       console.log(this.departments);
     });
   }
 
   deleteDepartment(id: any) {
-    this.departmentService.deleteDepartment(id).subscribe();
+    this.departmentService.deleteDepartment(id, apiUrl.department.delete).subscribe();
     this.getDepartment();
   }
 
   editChanges(id: any, form: NgForm) {
     if (form.valid) {
-      this.departmentService.updateDepartment(id, this.editDeptName).subscribe(
+      this.departmentService.updateDepartment(id, this.editDeptName, apiUrl.department.update).subscribe(
         (response) => {
           console.log('Department updated successfully', response);
           this.getDepartment();

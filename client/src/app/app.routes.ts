@@ -3,9 +3,10 @@ import { LoginComponent } from '../app/components/auth/login/login.component';
 import { RegisterComponent } from '../app/components/auth/register/register.component';
 import { AdminComponent } from './pages/Admin/admin/admin.component';
 import { CreateEmployeeComponent } from './pages/Employees/create-employee/create-employee.component';
-import { EditEmployeeComponent } from './pages/Employees/edit-employee/edit-employee.component';
+
 import { AddDepartmentComponent } from './pages/Department/add-department/add-department.component';
 import { DashboardComponent } from './pages/User/dashboard/dashboard.component';
+import { AdminLeaveComponent } from './pages/Leave/admin-leave/admin-leave.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -17,8 +18,8 @@ export const routes: Routes = [
         component: AdminComponent,
         children: [
             { path: 'create-emp', component: CreateEmployeeComponent },
-            { path: 'edit-emp', component: EditEmployeeComponent },
-            { path : 'add-dept', component : AddDepartmentComponent}
+            { path : 'add-dept', component : AddDepartmentComponent},
+            { path : "admin-leave", component : AdminLeaveComponent}
             
         
         ]

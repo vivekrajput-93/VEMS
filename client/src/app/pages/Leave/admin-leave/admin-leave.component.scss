@@ -1,0 +1,313 @@
+/////////////////  Header Container ////////////////
+// background-color: #212529;
+// background-color: #6c757d;
+// background-color: #262f37;
+
+
+.main-container {
+    width: 100%;
+}
+
+.header-container {
+    display: flex;
+    padding: 15px;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: .5rem;
+
+
+
+    .add-leave-btn {
+        height: fit-content;
+        padding: 10px 15px;
+        border : none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+        gap: 10px;
+        font-size: 1rem;
+        font-weight: 600;
+        background: linear-gradient(90deg, rgba(97, 214, 107, 1) 39%, rgba(6, 116, 46, 1) 100%);
+        color: white;
+        cursor: pointer;
+
+
+        i {
+            font-weight: 700;
+        }
+    }
+
+
+
+    .main-heading {
+          h2 {
+            // margin-bottom: 5px;
+            font-size: 1.8rem;
+          }
+
+
+          span {
+            color: gray;
+          }
+    }
+}
+
+
+//////////////////////////    Info section //////////////////////
+
+
+
+.info-section {
+    display: flex;
+    gap: 10px;
+    height: fit-content;
+    padding: 15px;
+    justify-content: space-between;
+    // margin-top: .3rem;
+    flex-wrap: wrap;
+
+    div {
+        
+        width: 250px;
+        padding: 20px 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        background-color: #212529;
+        border-radius: 5px;
+        color: #eee;
+
+
+        h3 {
+            font-weight: 500;
+        }
+
+        p {
+            font-weight: 500;
+
+
+            span {
+                color: gray;
+            }
+        }
+             
+    }
+
+}
+
+///////////////     Search Container  /////////////////////
+
+.search-container {
+    display: flex;
+    gap: 13px;
+    padding:  5px 13px;
+    align-items: center;
+
+    input, select {
+        background-color: #212529;
+        color: #fff;
+        padding: 20px 15px;
+        width: 170px;
+        border: none;
+        border-radius: 5px;
+        outline: none;
+
+        &::placeholder {
+            color: #999;
+        }
+    }
+
+    select {
+        appearance: none;
+        background-color: #212529;
+        
+    }
+
+    button {
+        background-color: #28a745; /* Green search button */
+        color: #fff;
+        border: none;
+        padding: 18px 10px;
+        width: 170px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+        font-size: 1.1rem;
+
+        &:hover {
+            background-color: #218838; /* Darker green on hover */
+        }
+    }
+
+
+}
+
+
+////////////////////////       Pagination Section /////////////////////
+
+
+.pagination-section {
+    display: flex;
+    gap: 5px;
+    // justify-content: center;
+    align-items: center;
+    margin-left: 20px;
+    margin-top: 1rem;
+
+
+    select {
+        padding: 8px;
+        outline: none;
+        border: none;
+        // border-radius: 5px;
+        background-color: #212529;
+        color: white;
+        font-size: 1rem;
+    }
+    
+}
+.pagination-controls {
+    margin-top: 2rem;
+    display: flex;
+    gap: 10px;
+    // margin-right: 2rem;
+    justify-content: end;
+    align-items: center;
+
+    button {
+        border : none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(6, 116, 46, 1);
+        cursor: pointer;
+
+
+        i {
+            font-size: 1.5rem;
+            color: white;
+        }
+    }
+}
+
+
+
+/////////////////    Dialog Components //////////////////////
+
+
+.custom-modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.custom-modal-content {
+    position: fixed;
+    z-index: 1001; /* Ensure it's above the backdrop */
+    width: 400px;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #212529;
+    border-radius: 5px;
+    padding: 20px;
+    overflow-y: auto; /* Allows scrolling within the modal */
+    max-height: 80vh; /* Constrain height to ensure scrolling inside */
+
+    .custom-modal::-webkit-scrollbar {
+        display: none !important;
+    }
+
+
+
+    .custom-modal-header {
+        display: flex;
+        padding: 5px 2px;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+        color: white;
+
+        button {
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+
+            i {
+                font-size: 1.2rem;
+                font-weight: 600;
+                color: white;
+            }
+        }
+    }
+
+    .custom-modal-body {
+        display: flex;
+        flex-direction: column;
+        margin: 0.5rem;
+
+        form {
+            display: flex;
+            flex-direction: column;
+            // gap: 10px;
+        }
+
+        label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: white;
+            margin-top: 10px;
+        }
+
+        input {
+            border: none;
+            outline: none;
+            padding: 10px 12px;
+            background-color: #6c757d;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            width: 100%;
+            margin-top: 5px;
+            color: white;
+        }
+    }
+
+    .custom-modal-footer {
+        display: flex;
+        margin-top: 1.5rem;
+        justify-content: end;
+        margin-right: 8px;
+        gap: 10px;
+    }
+
+    button {
+        border: none;
+        padding: 6px 20px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .cancel-button {
+        background-color: #6c757d;
+        color: white;
+    }
+
+    .save-button {
+        background-color: rgb(34, 197, 94);
+        color: white;
+    }
+}
+
+
+

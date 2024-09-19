@@ -12,6 +12,11 @@ export const apiUrl = {
         get : "get-dept",
         update : "update-dept",
         delete : "delete-dept"
+    },
+
+    leave : {
+        create : "create-leave",
+        get : "get-leave"
     }
 
 }

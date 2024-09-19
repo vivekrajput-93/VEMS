@@ -32,6 +32,6 @@ export interface Leave {
     from : number,
     to : number,
     reason : string,
-    noOfDays : string,
+    noOfDays : number,
     status : string
 }

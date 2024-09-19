@@ -41,6 +41,25 @@ const generateLeaveController = async(req, res) => {
 }
 
 
+const getLeaveController = async(req, res) => {
+    try {
+        const leave = await Leave.find({});
+        return res.status(200).send({
+            success : true,
+            message : "Fetched All Leave Succesfully",
+            leave
+        })
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({
+            success : false,
+            message : "Error in Leave Controller",
+            err : error
+        })
+    }
+}
+
+
 module.exports = {
-    generateLeaveController
+    generateLeaveController, getLeaveController
 }

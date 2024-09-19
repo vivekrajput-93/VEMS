@@ -11,7 +11,7 @@ export class LeaveService {
 
 
   createData(data: Leave , url: string) {
-    this.apiService.createData(url, data)
+     return this.apiService.createData<Leave>(url, data)
   }
 
 

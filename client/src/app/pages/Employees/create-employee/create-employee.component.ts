@@ -151,9 +151,9 @@ export class CreateEmployeeComponent {
   updatePagination() {
     this.totalPages = Math.ceil(this.employees.length / this.entriesPerPage);
     const startIndex = (this.currentPage - 1) * this.entriesPerPage;
-    console.log("start", startIndex)
+    // console.log("start", startIndex)
     const endIndex = startIndex + this.entriesPerPage;
-    console.log("end", endIndex)
+    // console.log("end", endIndex)
     this.paginatedEmployees = this.employees.slice(startIndex, endIndex);
   }
 

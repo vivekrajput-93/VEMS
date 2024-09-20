@@ -45,6 +45,8 @@ export class AddDepartmentComponent implements OnInit {
     this.getDepartment();
   }
 
+  ///////////////////         Creating the Department /////////////
+
   saveChanges(form: NgForm) {
     if (form.valid) {
       this.departmentService.createData(this.deptName, apiUrl.department.create).subscribe(
@@ -61,6 +63,9 @@ export class AddDepartmentComponent implements OnInit {
     }
   }
 
+
+  /////////////////////////      Fetching all the department ///////////
+
   getDepartment() {
     this.departmentService.getData(apiUrl.department.get).subscribe((data: any) => {
       this.departments = data.department;
@@ -68,10 +73,15 @@ export class AddDepartmentComponent implements OnInit {
     });
   }
 
+  ///////////////////////    Deleting the Department ///////////////////
+
   deleteDepartment(id: any) {
     this.departmentService.deleteDepartment(id, apiUrl.department.delete).subscribe();
     this.getDepartment();
   }
+
+
+  //////////////////////     Edit the department ////////////////////////
 
   editChanges(id: any, form: NgForm) {
     if (form.valid) {

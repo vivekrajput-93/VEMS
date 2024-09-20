@@ -106,7 +106,13 @@
     padding:  5px 13px;
     align-items: center;
 
-    input, select {
+    form { 
+        display: flex;
+        gap: 13px;        
+        
+        
+        
+        input, select {
         background-color: #212529;
         color: #fff;
         padding: 20px 15px;
@@ -119,6 +125,7 @@
             color: #999;
         }
     }
+} 
 
     select {
         appearance: none;

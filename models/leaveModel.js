@@ -10,7 +10,7 @@ const leaveSchema = new mongoose.Schema({
     leaveType : {
         type : String,
         default : "Casual Leave",
-        enum : ['Casual Leave', 'Medical Leave', 'Loss of Pay']
+        enum : ['Casual Leave', 'Medical Leave', 'LOP']
     },
     from : {
         type: Date,

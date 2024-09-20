@@ -8,7 +8,7 @@
         <div class="custom-add-modal">
             <button class="add-leave-btn" (click)="showDialog()"><i class="pi pi-plus"></i>Add Leave</button>
             <div class="custom-modal" *ngIf="visible">
-                <form class="custom-modal-content" #editForm="ngForm" (ngSubmit)="createLeave()" >
+                <form class="custom-modal-content" #editForm="ngForm" (ngSubmit)="createLeave()">
                     <div class="modal-header">
                         <span>Add Leave</span>
                         <i class="pi pi-times" (click)="closeDialog()"></i>
@@ -16,59 +16,60 @@
                     <div class="modal-content">
                         <div class="input-container">
                             <div><label>Employee Name *</label>
-                                <select class="dropdown-btn"  name="employeeId" [(ngModel)]="EmployeeId" >
+                                <select class="dropdown-btn" name="employeeId" [(ngModel)]="EmployeeId">
                                     <option value="">Select Employee</option>
-                                    <option value={{emp._id}} *ngFor="let emp of employees" >{{emp.firstName}} {{emp.lastName}}</option>
-    
+                                    <option value={{emp._id}} *ngFor="let emp of employees">{{emp.firstName}}
+                                        {{emp.lastName}}</option>
+
                                 </select>
                             </div>
                             <div><label>Leave Type</label>
-                                <select class="dropdown-btn"  name="leaveType" [(ngModel)]="leaveType" >
-                                    <option value="" >Select Leave</option>
+                                <select class="dropdown-btn" name="leaveType" [(ngModel)]="leaveType">
+                                    <option value="">Select Leave</option>
                                     <option value="Casual Leave">Casual Leave</option>
                                     <option value="Medical Leave">Medical Leave</option>
                                     <option value="LOP">LOP</option>
-    
+
                                 </select>
                             </div>
                         </div>
                         <div class="input-container">
                             <div><label>From</label>
-                                <input type="date"  name="from" [(ngModel)]="from" >
+                                <input type="date" name="from" [(ngModel)]="from">
                             </div>
                             <div><label>To</label>
-                             <input type="date" name="to"  [(ngModel)]="to">
+                                <input type="date" name="to" [(ngModel)]="to">
                             </div>
                         </div>
                         <div class="input-container">
                             <div><label>Status</label>
-                                <select class="dropdown-btn"  name="status"  [(ngModel)]="status" >
+                                <select class="dropdown-btn" name="status" [(ngModel)]="status">
                                     <option value="" disabled>Select Status</option>
                                     <option value="New">New</option>
                                     <option value="Pending">Pending</option>
                                     <option value="Approved">Approved</option>
                                     <option value="Declined">Declined</option>
-    
+
                                 </select>
                             </div>
                             <div><label>No of Days</label>
-                                <input type="number"  name="days"  [(ngModel)]="noOfDays">
+                                <input type="number" name="days" [(ngModel)]="noOfDays">
                             </div>
                         </div>
                         <div class="input-container">
                             <div><label>Reason</label>
-                                <textarea name="reason" [(ngModel)]="reason"  rows="5" ></textarea>
+                                <textarea name="reason" [(ngModel)]="reason" rows="5"></textarea>
                             </div>
 
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button (click)="closeDialog()">Cancel</button>
-                        <button class="save-button" type="submit" >Save</button>
+                        <button class="save-button" type="submit">Save</button>
                     </div>
                 </form>
                 <div class="custom-modal-backdrop" (click)="closeDialog()"></div>
-            </div> 
+            </div>
 
         </div>
     </div>
@@ -93,31 +94,33 @@
     </div>
 
     <div class="search-container">
-        <input type="text" placeholder="Employee Name" />
-        <select>
-            <option class="disable-value">
-                -- Select <span>Leave Type</span> --
-            </option>
-            <option>Annual Leave</option>
-            <option>Sick Leave</option>
-            <option>Casual Leave</option>
-        </select>
-        <select>
-            <option class="disable-value">
-                -- Select <span>Leave Status</span> --
-            </option>
-            <option>Pending</option>
-            <option>Approved</option>
-            <option>Rejected</option>
-        </select>
-        <input type="date" placeholder="From" />
-        <input type="date" />
-        <button>Search</button>
+        <form>
+            <input type="text" placeholder="Employee Name" name="search-input" [(ngModel)]="searchInput"  />
+            <select>
+                <option class="disable-value">
+                    -- Select <span>Leave Type</span> --
+                </option>
+                <option>Annual Leave</option>
+                <option>Sick Leave</option>
+                <option>Casual Leave</option>
+            </select>
+            <select>
+                <option class="disable-value">
+                    -- Select <span>Leave Status</span> --
+                </option>
+                <option>Pending</option>
+                <option>Approved</option>
+                <option>Rejected</option>
+            </select>
+            <input type="date" placeholder="From" />
+            <input type="date" />
+            <button type="button" (click)="searchFilteredData()" >Search</button>
+        </form>
     </div>
 
     <div class="pagination-section">
         <span>Show</span>
-        <select>
+        <select [(ngModel)]="entriesPerPage" (change)="onEntriesPerPageChange()">
             <option [value]="5">5</option>
             <option [value]="10">10</option>
             <option [value]="15">15</option>
@@ -127,7 +130,7 @@
     </div>
 
 
-        <div class="table-section">
+    <div class="table-section">
         <div class="dropdown"></div>
         <div class="table-container">
             <table class="styled-table">
@@ -144,10 +147,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let leave of leaves; let e = even; let i = index"
-                        [ngClass]="e ? 'even' : 'odd'">
+                    <tr *ngFor="let leave of paginatedEmployees; let e = even; let i = index" [ngClass]="e ? 'even' : 'odd'">
                         <td hidden>{{ e ? "odd" : "even" }}</td>
-                        <td>{{ i + 1 }}</td>
+                        <td>{{ (currentPage - 1) * entriesPerPage + i + 1 }}</td>
                         <td>{{ leave.employeeName }}</td>
                         <td>{{leave.leaveType}}</td>
                         <td>{{leave.from | date: 'dd-MMM-yyyy' }}</td>
@@ -155,14 +157,14 @@
                         <td>{{leave.reason}}</td>
                         <td>{{leave.status}}</td>
                         <td class="edit-section">
-                            <span class="icons" >
+                            <span class="icons">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="size-6">
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                         d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
                                 </svg>
                             </span>
-                            <span class="delete-icons" >
+                            <span class="delete-icons">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="size-6">
                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -170,7 +172,7 @@
                                 </svg>
                             </span>
                             <!-- Custom Modal -->
-                            
+
                             <!-- <div class="custom-add-modal">
                                 <button class="add-leave-btn" (click)="showDialog()"><i class="pi pi-plus"></i>Add Leave</button>
                                 <div class="custom-modal" *ngIf="visible">
@@ -241,6 +243,11 @@
                     </tr>
                 </tbody>
             </table>
+            <div class="pagination-controls">
+                <button (click)="prevPage()" [disabled]="currentPage === 1"><i class="pi pi-angle-left"></i></button>
+                <span>Page {{currentPage}} of {{totalPages}}</span>
+                <button (click)="nextPage()" [disabled]="currentPage === totalPages"><i class="pi pi-angle-right"></i></button>
+            </div>
         </div>
     </div>
 

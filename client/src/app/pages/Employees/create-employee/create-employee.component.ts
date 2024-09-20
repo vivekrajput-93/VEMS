@@ -15,7 +15,7 @@ import { apiUrl } from '../../../constants';
 })
 export class CreateEmployeeComponent {
 
-  @ViewChild('employeeForm') employeeForm!: NgForm; // Get reference to the form
+  @ViewChild('employeeForm') employeeForm!: NgForm; 
 
   constructor(private departmentService : DepartmentService, private employeeService : EmployeeService) {}
 
@@ -50,7 +50,8 @@ export class CreateEmployeeComponent {
   employees : any[] = []
 
 
-  //////////////   edit modal ////
+  ////////////////////////////////  edit modal ////////////////////
+
   editFirstName = "";
   editLastName = "";
   editEmail = "";
@@ -89,64 +90,12 @@ export class CreateEmployeeComponent {
   
 
 
-  ///////// Pagination /////////////
+  //////////////////////          Pagination ////////////////////////////
+
   paginatedEmployees: any[] = [];
   entriesPerPage = 5;
   currentPage = 1;
   totalPages = 1;
-
-
-  //////////////////   fetching department name /////////////////////////
-
-  getDepartment() {
-    this.departmentService.getData(apiUrl.department.get).subscribe((data: any) => {
-      this.departments = data.department;
-      console.log(this.departments);
-    });
-  }
-
-
-  createEmp() {
-    const employee: Employee = {
-      firstName: this.firstName,
-      lastName: this.lastName,
-      email: this.email,
-      phone: this.phone,
-      status: this.status,
-      position: this.position,
-      hiredDate: this.hiredDate,
-      departmentId: this.departmentId
-    };
-  
-    this.employeeService.createData(employee, apiUrl.employee.create).subscribe({
-      next: (response: any) => {
-        console.log("User registered successfully", response);
-      },
-      error: (err: any) => {
-        console.log('There is an error in registration', err);
-      }
-    });
-    setTimeout(() => {
-      this.getEmployee();
-    }, 100)
-
-    this.closeDialog();
-  }
-
-
-  getEmployee() {
-    this.employeeService.getData(apiUrl.employee.get).subscribe((data: any) => {
-      this.employees = data.employee.map((emp: any) => {
-        const department = this.departments.find(dept => dept._id === emp.departmentId);
-        return {
-          ...emp,
-          departmentName: department ? department.name : 'Unknown'
-        };
-      });
-      this.updatePagination();
-    });
-  }
-
 
   updatePagination() {
     this.totalPages = Math.ceil(this.employees.length / this.entriesPerPage);
@@ -178,12 +127,74 @@ export class CreateEmployeeComponent {
     }
   }
 
+
+  //////////////////   fetching department name /////////////////////////
+
+  getDepartment() {
+    this.departmentService.getData(apiUrl.department.get).subscribe((data: any) => {
+      this.departments = data.department;
+      console.log(this.departments);
+    });
+  }
+
+
+
+  /////////////////////       Create the Employeee /////////////////////
+
+  createEmp() {
+    const employee: Employee = {
+      firstName: this.firstName,
+      lastName: this.lastName,
+      email: this.email,
+      phone: this.phone,
+      status: this.status,
+      position: this.position,
+      hiredDate: this.hiredDate,
+      departmentId: this.departmentId
+    };
+  
+    this.employeeService.createData(employee, apiUrl.employee.create).subscribe({
+      next: (response: any) => {
+        console.log("User registered successfully", response);
+      },
+      error: (err: any) => {
+        console.log('There is an error in registration', err);
+      }
+    });
+    setTimeout(() => {
+      this.getEmployee();
+    }, 100)
+
+    this.closeDialog();
+  }
+
+
+  /////////////////////////////       Fetching all employee /////////////////
+
+  getEmployee() {
+    this.employeeService.getData(apiUrl.employee.get).subscribe((data: any) => {
+      this.employees = data.employee.map((emp: any) => {
+        const department = this.departments.find(dept => dept._id === emp.departmentId);
+        return {
+          ...emp,
+          departmentName: department ? department.name : 'Unknown'
+        };
+      });
+      this.updatePagination();
+    });
+  }
+
+
+
+  //////////////////////////////      Delete the Employee //////////////
+
   deleteEmployee(id : any, ) {
     this.employeeService.deleteData(id, apiUrl.employee.delete).subscribe();
     this.getEmployee()
   }
 
 
+  /////////////////////////         Edit the Employee ///////////////////
 
   editChanges(id:number, employee : any) {
     const updatedEmployee = {

@@ -20,6 +20,7 @@ export class AdminLeaveComponent {
   ) {}
 
   visible: boolean = false;
+isShow : boolean = false;
 
   EmployeeId = '';
   leaveType = '';
@@ -41,6 +42,31 @@ export class AdminLeaveComponent {
 
   closeDialog() {
     this.visible = false;
+  }
+
+  /////////////////////   Edit Modal Section ///////////////////////////
+
+  editEmployeeId = '';
+  editLeaveType = '';
+  editFrom = 0;
+  editTo = 0;
+  editStatus = '';
+  editNoOfDays = 0;
+  editReason = '';
+
+  showEditedDialog(leave : any) {
+    this.isShow = true;
+    this.editEmployeeId = leave.employeeId;
+    this.editLeaveType = leave.leaveType;
+    this.editFrom = leave.from;
+    this.editTo = leave.to;
+    this.editNoOfDays = leave.noOfDays;
+    this.editStatus  = leave.status;
+    this.editReason = leave.reason;
+  }
+
+  closeEditedDialog() {
+    this.isShow = false;
   }
 
   ///////// ///////////         Pagination ///////////////////////
@@ -155,8 +181,46 @@ export class AdminLeaveComponent {
     this.searchInput = '';
   }
 
+  /////////////////   Deleting the Leave from collection /////////////
+
+
+DeleteLeave(id : any) {
+  this.employeeService.deleteData(id, apiUrl.leave.delete).subscribe();
+  this.getLeave();
+}
+
+
+///////////////////////    Updating the Leave //////////////////////
+
+updateLeave(id: number, leave: any) {
+
+  const updateLeave = {
+    employeeId: this.editEmployeeId,
+    leaveType: this.editLeaveType,
+    from: this.editFrom,
+    to: this.editTo,
+    reason: this.editReason,
+    status: this.editStatus,
+    noOfDays: this.editNoOfDays,
+  };
+
+  this.leaveService.updateData(id, updateLeave, apiUrl.leave.update).subscribe({
+    next: (response: any) => {
+      console.log('Edited', response);
+      this.getLeave();
+      this.closeEditedDialog();
+    },
+    error: (err: any) => {
+      console.log('Error updating leave', err);
+    }
+  });
+}
+
   ngOnInit() {
     this.getEmployee();
     this.getLeave();
   }
 }
+
+
+

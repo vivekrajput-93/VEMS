@@ -118,7 +118,7 @@ const updateEmployeeController = async (req, res) => {
     } = req.body;
     const employees = await Employee.findByIdAndUpdate(
        id ,
-      { firstName, lastName, email, position, hiredDate, status, departmentId },
+      { firstName, lastName, email, position, hiredDate, phone, status, departmentId },
       { new: true }
     );
     return res.status(200).send({

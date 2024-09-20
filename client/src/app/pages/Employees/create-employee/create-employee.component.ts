@@ -138,7 +138,6 @@ export class CreateEmployeeComponent {
   }
 
 
-
   /////////////////////       Create the Employeee /////////////////////
 
   createEmp() {
@@ -218,6 +217,7 @@ export class CreateEmployeeComponent {
         console.log('Error updating employee', err);
       }
     });
+    
   }
 
 

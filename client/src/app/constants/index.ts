@@ -16,7 +16,9 @@ export const apiUrl = {
 
     leave : {
         create : "create-leave",
-        get : "get-leave"
+        get : "get-leave",
+        update : "update-leave",
+        delete : "delete-leave"
     }
 
 }

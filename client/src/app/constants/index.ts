@@ -19,6 +19,13 @@ export const apiUrl = {
         get : "get-leave",
         update : "update-leave",
         delete : "delete-leave"
+    },
+
+    job : {
+        create : "create-job",
+        get : "get-job",
+        update : "update-job",
+        delete : "delete-job"
     }
 
 }

@@ -1,45 +1,52 @@
-<div class="main-section">
-    <div class="title-container">
-        <div class="main-title">
-            <h1>Department</h1>
-            <span>Dashboard / Department</span>
+<div class="main-container">
+    <div class="header-container">
+        <div class="main-heading">
+            <h2>Designation</h2>
+            <span>Dashboard / Designation</span>
         </div>
-        <div class="card">
-            <button class="add-btn" (click)="showDialog()">
-                <i class="pi pi-plus"></i>Add Department
+        <div class="custom-add-modal">
+            <button class="add-job-btn" (click)="showDialog()">
+                <i class="pi pi-plus"></i> Add Designation
             </button>
-            <!-- Custom Modal -->
             <div class="custom-modal" *ngIf="visible">
                 <div class="custom-modal-content">
                     <div class="custom-modal-header">
-                        <h2>Add Department</h2>
+                        <h2>Add Designation</h2>
                         <button (click)="closeDialog()"><i class="pi pi-times"></i></button>
                     </div>
 
                     <div class="custom-modal-body">
-                        <form #departmentForm="ngForm" (ngSubmit)="saveChanges(departmentForm)">
-                            <label for="departmentName">Department Name:</label>
-                            <input id="departmentName" name="departmentName" [(ngModel)]="deptName" required
-                                pattern="^[A-Za-z ]+$" #departmentName="ngModel" class="input-field" />
-
-                            <!-- Validation messages -->
-                            <div *ngIf="
-                  departmentName.invalid &&
-                  (departmentName.dirty || departmentName.touched)
-                ">
-                                <small *ngIf="departmentName.errors?.['required']" class="text-danger">
-                                    Department name is required.
-                                </small>
-                                <small *ngIf="departmentName.errors?.['pattern']" class="text-danger">
-                                    Only alphabets are allowed.
-                                </small>
+                        <form #departmentForm="ngForm">
+                            <div class="form-group">
+                                <label for="departmentName">Department *</label> <br />
+                                <select class="dropdown-btn" [(ngModel)]="departmentId" name="DepartmentId"
+                                    class="form-control">
+                                    <option value="" disabled>Select Department</option>
+                                    <option value="{{ dept._id }}" *ngFor="let dept of departments">
+                                        {{ dept.name }}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="select form-group">
+                                <label>Job Name</label><br />
+                                <input name="jobName" [(ngModel)]="jobName" required class="input-field form-control" />
                             </div>
 
-                            <div class="custom-modal-footer">
+                            <!-- Validation messages -->
+                            <!-- <div *ngIf="departmentName.invalid &&(departmentName.dirty || departmentName.touched)">
+                                    <small *ngIf="departmentName.errors?.['required']" class="text-danger">
+                                        Department name is required.
+                                    </small>
+                                    <small *ngIf="departmentName.errors?.['pattern']" class="text-danger">
+                                        Only alphabets are allowed.
+                                    </small>
+                                </div> -->
+
+                            <div class="custom-modal-footer mt-1">
                                 <button type="button" class="cancel-button" (click)="closeDialog()">
                                     Cancel
                                 </button>
-                                <button type="submit" class="save-button" [disabled]="departmentForm.invalid">
+                                <button type="submit" class="save-button" (click)="createJob()">
                                     Save
                                 </button>
                             </div>
@@ -51,8 +58,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Pagination Section -->
 
     <div class="page-section">
         <label>Show</label>
@@ -67,8 +72,6 @@
         <div>entries</div>
     </div>
 
-    <!----------------  Table Section    -------------------------->
-
     <div class="table-section">
         <div class="dropdown"></div>
         <div class="table-container">
@@ -76,27 +79,29 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Department Name</th>
+                        <th>Designation</th>
+                        <th>Department</th>
+
                         <th class="action-section">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let department of departments; let e = even; let i = index"
-                        [ngClass]="e ? 'even' : 'odd'">
+                    <tr *ngFor="let job of Jobs; let e = even; let i = index" [ngClass]="e ? 'even' : 'odd'">
                         <td hidden>{{ e ? "odd" : "even" }}</td>
                         <td>{{ i + 1 }}</td>
                         <td>
-                            {{ department.name }}
+                            {{ job.jobName }}
                         </td>
+                        <td>{{ job.departmentName }}</td>
                         <td class="edit-section">
-                            <span class="icons" (click)="showEditDialog(department)">
+                            <span class="icons" (click)="showEditDialog()">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="size-6">
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                         d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
                                 </svg>
                             </span>
-                            <span class="delete-icons" (click)="deleteDepartment(department._id)">
+                            <span class="delete-icons" (click)="deleteJobs(job._id)">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="size-6">
                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -104,7 +109,6 @@
                                 </svg>
                             </span>
                             <!-- Custom Modal -->
-                            <!-- edit-department-modal.component.html -->
                             <div class="custom-modal" *ngIf="isOpen">
                                 <div class="custom-edit-modal-content">
                                     <div class="custom-modal-header">
@@ -115,14 +119,25 @@
                                     </div>
 
                                     <div class="custom-modal-body">
-                                        <form #editForm="ngForm" (ngSubmit)="editChanges(department._id, editForm)">
-                                            <label for="editDepartmentName">Department Name:</label>
-                                            <input id="editDepartmentName" name="editDepartmentName"
-                                                [(ngModel)]="editDeptName" required pattern="^[A-Za-z ]+$"
-                                                #editDepartmentName="ngModel" autocomplete="off" class="input-field" />
+                                        <form #editForm="ngForm">
+                                            <div class="form-group">
+                                                <label for="departmentName">Department *</label> <br />
+                                                <select class="dropdown-btn" [(ngModel)]="departmentId"
+                                                    name="DepartmentId" class="form-control">
+                                                    <option value="" disabled>Select Department</option>
+                                                    <option value="{{ dept._id }}" *ngFor="let dept of departments">
+                                                        {{ dept.name }}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                            <div class="select form-group">
+                                                <label>Job Name</label><br />
+                                                <input name="jobName" [(ngModel)]="jobName" required
+                                                    class="input-field form-control" />
+                                            </div>
 
                                             <!-- Validation messages -->
-                                            <div *ngIf="editDepartmentName.invalid &&(editDepartmentName.dirty ||editDepartmentName.touched)">
+                                            <!-- <div *ngIf="editDepartmentName.invalid &&(editDepartmentName.dirty ||editDepartmentName.touched)">
                                                 <small *ngIf="editDepartmentName.errors?.['required']"
                                                     class="text-danger">
                                                     Department name is required.
@@ -131,7 +146,7 @@
                                                     class="text-danger">
                                                     Only alphabets are allowed.
                                                 </small>
-                                            </div>
+                                            </div> -->
 
                                             <div class="custom-modal-footer">
                                                 <button class="cancel-button" (click)="closeEditDialog()">

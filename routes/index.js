@@ -5,6 +5,7 @@ const { requiredSignIn, isAdmin } = require("../middlewares/authMiddleware");
 const { createEmployeeController, getEmployeeController, deleteEmployeeController, updateEmployeeController } = require("../controllers/EmployeeController");
 const { createDepartmentController, getDepartmentController, deleteDepartmentController, updateDepartmentController } = require("../controllers/DepartmentController");
 const { generateLeaveController, getLeaveController, deleteLeaveController, updateLeaveController } = require("../controllers/LeaveController");
+const { createJobController, getJobController, updateJobController, deleteJobController } = require("../controllers/jobsController");
 
 ///////////////////////         Auth Routes ////////////////////////////
 
@@ -50,6 +51,17 @@ router.get("/auth/get-leave", getLeaveController);
 router.delete("/auth/delete-leave/:id", deleteLeaveController);
 
 router.put("/auth/update-leave/:id", updateLeaveController);
+
+
+/////////////////////////   Job Routes  ////////////////////////////////
+
+router.post("/auth/create-job", createJobController);
+
+router.get("/auth/get-job", getJobController);
+
+router.put("/auth/update-job/:id", updateJobController);
+
+router.delete("/auth/delete-job/:id", deleteJobController)
 
 
 

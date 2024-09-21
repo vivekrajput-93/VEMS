@@ -30,16 +30,7 @@ const createEmployeeController = async (req, res) => {
       case !status:
         return res.status(500).send({ error: "status is required" });
     }
-    const employee = {
-      firstName,
-      lastName,
-      position,
-      email,
-      phone,
-      status,
-      departmentId,
-      hiredDate,
-    };
+  
 
     const employees = new Employee({
       firstName,

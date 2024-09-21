@@ -35,3 +35,9 @@ export interface Leave {
     noOfDays : number,
     status : string
 }
+
+
+export interface Job {
+    departmentId : string,
+    jobName : string
+}

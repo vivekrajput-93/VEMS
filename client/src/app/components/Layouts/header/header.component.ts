@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, HostListener } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -10,10 +11,19 @@ import { Component, HostListener } from '@angular/core';
 })
 export class HeaderComponent {
 
+
+  constructor(private router : Router) {}
+
   isDropdownOpen = false;
 
   toggleDropdown() {
     this.isDropdownOpen = !this.isDropdownOpen;
+  }
+
+   Logout() {
+   localStorage.removeItem('auth');
+   this.router.navigate(['/login'])
+
   }
 
   @HostListener('document:click', ['$event'])

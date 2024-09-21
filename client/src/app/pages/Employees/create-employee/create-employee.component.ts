@@ -187,7 +187,7 @@ export class CreateEmployeeComponent {
 
   //////////////////////////////      Delete the Employee //////////////
 
-  deleteEmployee(id : any, ) {
+  deleteEmployee(id : any) {
     this.employeeService.deleteData(id, apiUrl.employee.delete).subscribe();
     this.getEmployee()
   }

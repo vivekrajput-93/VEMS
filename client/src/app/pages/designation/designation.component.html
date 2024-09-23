@@ -94,7 +94,7 @@
                         </td>
                         <td>{{ job.departmentName }}</td>
                         <td class="edit-section">
-                            <span class="icons" (click)="showEditDialog()">
+                            <span class="icons" (click)="showEditDialog(job)">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="size-6">
                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -119,10 +119,10 @@
                                     </div>
 
                                     <div class="custom-modal-body">
-                                        <form #editForm="ngForm">
+                                        <form #editForm="ngForm"    >
                                             <div class="form-group">
                                                 <label for="departmentName">Department *</label> <br />
-                                                <select class="dropdown-btn" [(ngModel)]="departmentId"
+                                                <select class="dropdown-btn" [(ngModel)]="editDepartmentId"
                                                     name="DepartmentId" class="form-control">
                                                     <option value="" disabled>Select Department</option>
                                                     <option value="{{ dept._id }}" *ngFor="let dept of departments">
@@ -132,7 +132,7 @@
                                             </div>
                                             <div class="select form-group">
                                                 <label>Job Name</label><br />
-                                                <input name="jobName" [(ngModel)]="jobName" required
+                                                <input name="jobName" [(ngModel)]="editJobName" required
                                                     class="input-field form-control" />
                                             </div>
 
@@ -152,7 +152,7 @@
                                                 <button class="cancel-button" (click)="closeEditDialog()">
                                                     Cancel
                                                 </button>
-                                                <button type="submit" class="save-button" [disabled]="editForm.invalid">
+                                                <button type="submit" class="save-button" (click)="editJob(job._id, job)" >
                                                     Save
                                                 </button>
                                             </div>

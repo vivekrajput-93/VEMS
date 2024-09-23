@@ -177,7 +177,7 @@
                             <div class="custom-add-modal">
                                 <div class="custom-modal" *ngIf="isShow">
                                     <form class="custom-modal-content" #editForm="ngForm"
-                                        (ngSubmit)="updateLeave(leave._id, leave)">
+                                        >
                                         <div class="modal-header">
                                             <span>Edit Leave</span>
                                             <i class="pi pi-times" (click)="closeEditedDialog()"></i>
@@ -237,7 +237,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button (click)="closeEditedDialog()">Cancel</button>
-                                            <button class="save-button" type="submit">Save</button>
+                                            <button class="save-button" type="submit" (click)="updateLeave(leave._id, leave)" >Save</button>
                                         </div>
                                     </form>
                                     <div class="custom-modal-backdrop" (click)="closeEditedDialog()"></div>

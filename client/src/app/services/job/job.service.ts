@@ -23,5 +23,9 @@ export class JobService {
     return this.apiService.deleteData(url, id)
   }
 
+  updateData(id:number, job: Job, url: string) {
+    return this.apiService.updateData<Job>(url, id, job);
+  }
+
 
 }

@@ -228,7 +228,7 @@
 
 
 .custom-modal-content {
-    position: relative;
+    position: fixed;
     width: 600px;
     background-color: #212529;
     border-radius: 10px;
@@ -396,6 +396,7 @@
     .action-section {
         width: 100px;
     }
+    
 
     .edit-section {
         display: flex;
@@ -412,6 +413,9 @@
         }
     }
     
+
+
+
     .delete-icons {
         padding: 4px 10px;
         background-color: #3e556c;
@@ -431,4 +435,5 @@
 
 
 }
+
 

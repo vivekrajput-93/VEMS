@@ -42,13 +42,17 @@ export class DesignationComponent {
   editDepartmentId = "";
   editJobName = "";
 
-  showEditDialog() {
+  showEditDialog(job : any) {
     this.isOpen = true;
+    this.departmentId = job.departmentId;
+    this.editJobName = job.jobName;
   }
 
   closeEditDialog() {
     this.isOpen = false
   }
+
+
 
 
 
@@ -117,8 +121,33 @@ export class DesignationComponent {
     this.getJob();
   }
 
+
+  /////////////////////////////   Editing the Job //////////////////////
+
+  editJob(id:number , job : any) {
+    const updatedJob = {
+      departmentId : this.editDepartmentId,
+      jobName : this.editJobName,
+    }
+
+    this.jobService.updateData(id, updatedJob, apiUrl.job.update).subscribe({
+      next : (response : any) => {
+        console.log("Edited", response);
+        this.getJob();
+        this.closeEditDialog()
+      },
+      error : (err : any) => {
+        console.log("Error in Job", err)
+      }
+    })
+  }
+
     ngOnInit() {
       this.getDepartment();
       this.getJob();
     }
 }
+
+
+
+

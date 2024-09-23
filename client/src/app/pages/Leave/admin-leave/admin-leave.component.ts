@@ -80,9 +80,7 @@ isShow : boolean = false;
   updatePagination() {
     this.totalPages = Math.ceil(this.FilteredData.length / this.entriesPerPage);
     const startIndex = (this.currentPage - 1) * this.entriesPerPage;
-    // console.log("start", startIndex)
     const endIndex = startIndex + this.entriesPerPage;
-    // console.log("end", endIndex)
     this.paginatedEmployees = this.FilteredData.slice(startIndex, endIndex);
   }
 

@@ -5,11 +5,12 @@ import { JobService } from '../../services/job/job.service';
 import { Job } from '../../models/auth';
 import { apiUrl } from '../../constants';
 import { DepartmentService } from '../../services/department/department.service';
+import { DynamicHeaderComponent } from "../../components/dynamic-header/dynamic-header.component";
 
 @Component({
   selector: 'app-designation',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, DynamicHeaderComponent],
   templateUrl: './designation.component.html',
   styleUrl: './designation.component.scss'
 })

@@ -1,0 +1,43 @@
+
+.title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+
+
+
+    .main-title {
+        padding: 10px 0px;
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+
+        h1 {
+            font-weight: 500;
+        }
+
+        span {
+            color: gray;
+            font-size: 1rem;
+        }
+    }
+
+
+    .add-btn {
+        height: fit-content;
+        padding: 10px 14px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        border: none;
+        border-radius: 5px;
+        background: linear-gradient(90deg, rgba(97, 214, 107, 1) 39%, rgba(6, 116, 46, 1) 100%);
+        
+        color: white;
+        cursor: pointer;
+    }
+}

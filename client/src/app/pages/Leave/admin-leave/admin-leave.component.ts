@@ -5,11 +5,12 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { EmployeeService } from '../../../services/employee/employee.service';
 import { apiUrl } from '../../../constants';
 import { Leave } from '../../../models/auth';
+import { DynamicHeaderComponent } from "../../../components/dynamic-header/dynamic-header.component";
 
 @Component({
   selector: 'app-admin-leave',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, DynamicHeaderComponent],
   templateUrl: './admin-leave.component.html',
   styleUrl: './admin-leave.component.scss',
 })

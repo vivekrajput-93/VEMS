@@ -1,12 +1,11 @@
 <div class="main-container">
-    <div class="header-container">
-        <div class="main-heading">
-            <h2>Leave</h2>
-            <span>Dashboard / Leaves</span>
-        </div>
+    <app-dynamic-header [title]="'Leave'" [breadcrumb]="'Dashboard / Leave'"
+    [addButtonText]="'Add Leave'" (onAdd)="showDialog()">
+</app-dynamic-header>
+
 
         <div class="custom-add-modal">
-            <button class="add-leave-btn" (click)="showDialog()"><i class="pi pi-plus"></i>Add Leave</button>
+
             <div class="custom-modal" *ngIf="visible">
                 <form class="custom-modal-content" #editForm="ngForm" (ngSubmit)="createLeave()">
                     <div class="modal-header">
@@ -258,4 +257,3 @@
     </div>
 
 
-</div>

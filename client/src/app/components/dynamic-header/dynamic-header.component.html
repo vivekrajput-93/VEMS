@@ -1,0 +1,11 @@
+<div class="title-container">
+    <div class="main-title">
+        <h1>{{ title }}</h1>
+        <span>{{ breadcrumb }}</span>
+    </div>
+    <div class="card">
+        <button class="add-btn" (click)="onAdd.emit()">
+            <i class="pi pi-plus"></i> {{ addButtonText }}
+        </button>
+    </div>
+</div>

@@ -3,11 +3,12 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { DepartmentService } from '../../../services/department/department.service';
 import { apiUrl } from '../../../constants';
+import { DynamicHeaderComponent } from "../../../components/dynamic-header/dynamic-header.component";
 
 @Component({
   selector: 'app-add-department',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, DynamicHeaderComponent],
   templateUrl: './add-department.component.html',
   styleUrl: './add-department.component.scss',
 })

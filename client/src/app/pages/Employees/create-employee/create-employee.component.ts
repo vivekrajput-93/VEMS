@@ -5,11 +5,12 @@ import { DepartmentService } from '../../../services/department/department.servi
 import { Employee } from '../../../models/auth';
 import { EmployeeService } from '../../../services/employee/employee.service';
 import { apiUrl } from '../../../constants';
+import { DynamicHeaderComponent } from "../../../components/dynamic-header/dynamic-header.component";
 
 @Component({
   selector: 'app-edit-employee',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, DynamicHeaderComponent],
   templateUrl: './create-employee.component.html',
   styleUrl: './create-employee.component.scss'
 })

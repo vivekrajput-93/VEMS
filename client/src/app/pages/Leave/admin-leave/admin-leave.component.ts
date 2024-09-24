@@ -78,11 +78,10 @@ isShow : boolean = false;
   totalPages = 1;
 
   updatePagination() {
+    
     this.totalPages = Math.ceil(this.FilteredData.length / this.entriesPerPage);
     const startIndex = (this.currentPage - 1) * this.entriesPerPage;
-    // console.log("start", startIndex)
     const endIndex = startIndex + this.entriesPerPage;
-    // console.log("end", endIndex)
     this.paginatedEmployees = this.FilteredData.slice(startIndex, endIndex);
   }
 
@@ -144,7 +143,7 @@ isShow : boolean = false;
 
 
 
-///////////////////    Fetching all the leaves /////////////////
+///////////////////    Fetching all the leaves  /////////////////
 
   getLeave() {
     this.leaveService.getData(apiUrl.leave.get).subscribe((data: any) => {

@@ -7,6 +7,7 @@ import { apiUrl } from '../../constants';
 import { DepartmentService } from '../../services/department/department.service';
 import { DynamicHeaderComponent } from "../../components/dynamic-header/dynamic-header.component";
 
+
 @Component({
   selector: 'app-designation',
   standalone: true,
@@ -99,8 +100,6 @@ export class DesignationComponent {
 
   ////////////////////////   Get job ////////////////////////////////
 
-  
-
 
   getJob() {
     this.jobService.getData(apiUrl.job.get).subscribe((data : any) => {
@@ -125,7 +124,7 @@ export class DesignationComponent {
 
   /////////////////////////////   Editing the Job //////////////////////
 
-  editJob(id:number , job : any) {
+  updateJob(id:number , job : any) {
     const updatedJob = {
       departmentId : this.editDepartmentId,
       jobName : this.editJobName,

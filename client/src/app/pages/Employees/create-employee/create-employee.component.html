@@ -12,7 +12,7 @@
                     <span>Add Employee</span>
                     <i class="pi pi-times" (click)="closeDialog()"></i>
                 </div>
-                <form #employeeForm="ngForm" (ngSubmit)="createEmp()" class="modal-content">
+                <form #employeeForm="ngForm" (ngSubmit)="createEmployee()" class="modal-content">
                     <div class="input-container">
                         <div>
                             <label>First Name *</label>
@@ -133,7 +133,7 @@
                         <!-- Custom Modal -->
                         <div class="custom-modal" *ngIf="isOpen">
                             <form class="custom-modal-content" #editForm="ngForm"
-                                (ngSubmit)="editChanges(emp._id, emp)">
+                                (ngSubmit)="updateEmployee(emp._id, emp)">
                                 <div class="modal-header">
                                     <span>Edit Employee</span>
                                     <i class="pi pi-times" (click)="closeEditDilog()"></i>

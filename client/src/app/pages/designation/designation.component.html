@@ -1,35 +1,35 @@
-<div class="main-container">
-    <app-dynamic-header [title]="'Designation'" [breadcrumb]="'Dashboard / Designation'"
-        [addButtonText]="'Add Designation '" (onAdd)="showDialog()">
-    </app-dynamic-header>
+<div class="main-container"></div>
+<app-dynamic-header [title]="'Designation'" [breadcrumb]="'Dashboard / Designation'"
+    [addButtonText]="'Add Designation '" (onAdd)="showDialog()">
+</app-dynamic-header>
 
-    <div class="custom-add-modal">
-        <div class="custom-modal" *ngIf="visible">
-            <div class="custom-modal-content">
-                <div class="custom-modal-header">
-                    <h2>Add Designation</h2>
-                    <button (click)="closeDialog()"><i class="pi pi-times"></i></button>
-                </div>
+<div class="custom-add-modal">
+    <div class="custom-modal" *ngIf="visible">
+        <div class="custom-modal-content">
+            <div class="custom-modal-header">
+                <h2>Add Designation</h2>
+                <button (click)="closeDialog()"><i class="pi pi-times"></i></button>
+            </div>
 
-                <div class="custom-modal-body">
-                    <form #departmentForm="ngForm">
-                        <div class="form-group">
-                            <label for="departmentName">Department *</label> <br />
-                            <select class="dropdown-btn" [(ngModel)]="departmentId" name="DepartmentId"
-                                class="form-control">
-                                <option value="" disabled>Select Department</option>
-                                <option value="{{ dept._id }}" *ngFor="let dept of departments">
-                                    {{ dept.name }}
-                                </option>
-                            </select>
-                        </div>
-                        <div class="select form-group">
-                            <label>Job Name</label><br />
-                            <input name="jobName" [(ngModel)]="jobName" required class="input-field form-control" />
-                        </div>
+            <div class="custom-modal-body">
+                <form #departmentForm="ngForm">
+                    <div class="form-group">
+                        <label for="departmentName">Department *</label> <br />
+                        <select class="dropdown-btn" [(ngModel)]="departmentId" name="DepartmentId"
+                            class="form-control">
+                            <option value="" disabled>Select Department</option>
+                            <option value="{{ dept._id }}" *ngFor="let dept of departments">
+                                {{ dept.name }}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="select form-group">
+                        <label>Job Name</label><br />
+                        <input name="jobName" [(ngModel)]="jobName" required class="input-field form-control" />
+                    </div>
 
-                        <!-- Validation messages -->
-                        <!-- <div *ngIf="departmentName.invalid &&(departmentName.dirty || departmentName.touched)">
+                    <!-- Validation messages -->
+                    <!-- <div *ngIf="departmentName.invalid &&(departmentName.dirty || departmentName.touched)">
                                     <small *ngIf="departmentName.errors?.['required']" class="text-danger">
                                         Department name is required.
                                     </small>
@@ -38,22 +38,22 @@
                                     </small>
                                 </div> -->
 
-                        <div class="custom-modal-footer mt-1">
-                            <button type="button" class="cancel-button" (click)="closeDialog()">
-                                Cancel
-                            </button>
-                            <button type="submit" class="save-button" (click)="createJob()">
-                                Save
-                            </button>
-                        </div>
-                    </form>
-                </div>
+                    <div class="custom-modal-footer mt-1">
+                        <button type="button" class="cancel-button" (click)="closeDialog()">
+                            Cancel
+                        </button>
+                        <button type="submit" class="save-button" (click)="createJob()">
+                            Save
+                        </button>
+                    </div>
+                </form>
             </div>
-
-            <div class="custom-modal-backdrop" (click)="closeDialog()"></div>
         </div>
+
+        <div class="custom-modal-backdrop" (click)="closeDialog()"></div>
     </div>
 </div>
+
 
 <div class="page-section">
     <label>Show</label>
@@ -148,7 +148,7 @@
                                             <button class="cancel-button" (click)="closeEditDialog()">
                                                 Cancel
                                             </button>
-                                            <button type="submit" class="save-button" (click)="editJob(job._id, job)">
+                                            <button type="submit" class="save-button" (click)="updateJob(job._id, job)">
                                                 Save
                                             </button>
                                         </div>

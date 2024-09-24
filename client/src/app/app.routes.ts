@@ -8,6 +8,7 @@ import { AddDepartmentComponent } from './pages/Department/add-department/add-de
 import { DashboardComponent } from './pages/User/dashboard/dashboard.component';
 import { AdminLeaveComponent } from './pages/Leave/admin-leave/admin-leave.component';
 import { DesignationComponent } from './pages/designation/designation.component';
+import { AdminDashboardComponent } from './pages/Admin/admin-dashboard/admin-dashboard.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -15,15 +16,14 @@ export const routes: Routes = [
     { path : "user-dashboard", component : DashboardComponent},
     { path: 'register', component: RegisterComponent },
     {
-        path: 'admin',
+        path: '',
         component: AdminComponent,
         children: [
             { path: 'create-emp', component: CreateEmployeeComponent },
             { path : 'add-dept', component : AddDepartmentComponent},
             { path : "admin-leave", component : AdminLeaveComponent},
-            { path : "job", component : DesignationComponent }
-            
-        
+            { path : "job", component : DesignationComponent },
+            { path : "admin", component : AdminDashboardComponent}
         ]
     },
     

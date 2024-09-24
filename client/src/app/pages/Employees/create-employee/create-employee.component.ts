@@ -141,7 +141,7 @@ export class CreateEmployeeComponent {
 
   /////////////////////       Create the Employeee /////////////////////
 
-  createEmp() {
+  createEmployee() {
     const employee: Employee = {
       firstName: this.firstName,
       lastName: this.lastName,
@@ -196,7 +196,7 @@ export class CreateEmployeeComponent {
 
   /////////////////////////         Edit the Employee ///////////////////
 
-  editChanges(id:number, employee : any) {
+  updateEmployee(id:number, employee : any) {
     const updatedEmployee = {
       firstName: this.editFirstName,
       lastName: this.editLastName,

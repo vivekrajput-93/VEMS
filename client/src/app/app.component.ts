@@ -8,11 +8,12 @@ import { AdminComponent } from './pages/Admin/admin/admin.component';
 import { DashboardComponent } from './pages/User/dashboard/dashboard.component';
 import { CreateEmployeeComponent } from './pages/Employees/create-employee/create-employee.component';
 import { routes } from './app.routes'; // Import your routes
+import { CustomModalComponent } from './pages/Department/add-department/custom-modal/custom-modal.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, RouterModule, SidebarComponent],
+  imports: [RouterOutlet, HeaderComponent, RouterModule, SidebarComponent, CustomModalComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

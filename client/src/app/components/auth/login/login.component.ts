@@ -29,14 +29,7 @@ export class LoginComponent {
     this.authService.login(this.userEmail, this.userPassword).subscribe({
       next: (response: any) => {
         console.log("Login successful", response);
-        { this.authService.userValue?.user?.role === 1 ? this.router.navigate(['/admin']) : this.router.navigate(['/user-dashboard']);}
-        if (response) {
-          this.messageService.add({
-            severity: 'error',
-            detail: 'Invalid Password'
-          });
-          return;
-        }
+        { this.authService.userValue?.user?.role ===  1  ? this.router.navigate(['/admin']) : this.router.navigate(['/user-dashboard']);}
         
       },
       error: (err: any) => {
@@ -44,7 +37,7 @@ export class LoginComponent {
         this.messageService.add({
           severity: 'error',
           summary: 'Login Error',
-          detail: 'Something went wrong. Please try again.'
+          detail: 'Something went wrong. Please try again'
         });
       }
     });

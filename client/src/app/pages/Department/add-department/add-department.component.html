@@ -1,49 +1,26 @@
 <div class="main-section">
     <app-dynamic-header [title]="'Department'" [breadcrumb]="'Dashboard / Department'"
-        [addButtonText]="'Add Department '" (onAdd)="showDialog()">
+        [addButtonText]="'Add Department '" (onAdd)="showAddDialog()">
     </app-dynamic-header>
 
     <!-- Custom Modal -->
-    <div class="custom-modal" *ngIf="visible">
-        <div class="custom-modal-content">
-            <div class="custom-modal-header">
-                <h2>Add Department</h2>
-                <button (click)="closeDialog()"><i class="pi pi-times"></i></button>
+    <app-custom-modal [visible]="visible" [title]="isEditMode ? 'Edit Department' : 'Add Department'"
+        (close)="closeDialog()" (save)="saveChanges(departmentForm)">
+        <form #departmentForm="ngForm">
+            <div>
+                <label for="departmentName">Department Name:</label>
+                <input id="departmentName" name="departmentName" [(ngModel)]="deptName" required pattern="^[A-Za-z ]+$"
+                    #departmentName="ngModel" class="input-field" />
+                <!-- Validation messages -->
+                <div *ngIf="departmentName.invalid && (departmentName.dirty || departmentName.touched)">
+                    <small *ngIf="departmentName.errors?.['required']" class="text-danger">Department name is
+                        required.</small>
+                    <small *ngIf="departmentName.errors?.['pattern']" class="text-danger">Only alphabets are
+                        allowed.</small>
+                </div>
             </div>
-
-            <div class="custom-modal-body">
-                <form #departmentForm="ngForm" (ngSubmit)="saveChanges(departmentForm)">
-                    <label for="departmentName">Department Name:</label>
-                    <input id="departmentName" name="departmentName" [(ngModel)]="deptName" required
-                        pattern="^[A-Za-z ]+$" #departmentName="ngModel" class="input-field" />
-
-                    <!-- Validation messages -->
-                    <div *ngIf="
-                  departmentName.invalid &&
-                  (departmentName.dirty || departmentName.touched)
-                ">
-                        <small *ngIf="departmentName.errors?.['required']" class="text-danger">
-                            Department name is required.
-                        </small>
-                        <small *ngIf="departmentName.errors?.['pattern']" class="text-danger">
-                            Only alphabets are allowed.
-                        </small>
-                    </div>
-
-                    <div class="custom-modal-footer">
-                        <button type="button" class="cancel-button" (click)="closeDialog()">
-                            Cancel
-                        </button>
-                        <button type="submit" class="save-button" [disabled]="departmentForm.invalid">
-                            Save
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <div class="custom-modal-backdrop" (click)="closeDialog()"></div>
-    </div>
+        </form>
+    </app-custom-modal>
 </div>
 
 <!-- Pagination Section -->
@@ -96,49 +73,6 @@
                                     d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
                             </svg>
                         </span>
-                        <!-- Custom Modal -->
-                        <!-- edit-department-modal.component.html -->
-                        <div class="custom-modal" *ngIf="isOpen">
-                            <div class="custom-edit-modal-content">
-                                <div class="custom-modal-header">
-                                    <h2>Edit Department</h2>
-                                    <button (click)="closeEditDialog()">
-                                        <i class="pi pi-times"></i>
-                                    </button>
-                                </div>
-
-                                <div class="custom-modal-body">
-                                    <form #editForm="ngForm" (ngSubmit)="editChanges(department._id, editForm)">
-                                        <label for="editDepartmentName">Department Name:</label>
-                                        <input id="editDepartmentName" name="editDepartmentName"
-                                            [(ngModel)]="editDeptName" required pattern="^[A-Za-z ]+$"
-                                            #editDepartmentName="ngModel" autocomplete="off" class="input-field" />
-
-                                        <!-- Validation messages -->
-                                        <div
-                                            *ngIf="editDepartmentName.invalid &&(editDepartmentName.dirty ||editDepartmentName.touched)">
-                                            <small *ngIf="editDepartmentName.errors?.['required']" class="text-danger">
-                                                Department name is required.
-                                            </small>
-                                            <small *ngIf="editDepartmentName.errors?.['pattern']" class="text-danger">
-                                                Only alphabets are allowed.
-                                            </small>
-                                        </div>
-
-                                        <div class="custom-modal-footer">
-                                            <button class="cancel-button" (click)="closeEditDialog()">
-                                                Cancel
-                                            </button>
-                                            <button type="submit" class="save-button" [disabled]="editForm.invalid">
-                                                Save
-                                            </button>
-                                        </div>
-                                    </form>
-                                </div>
-
-                                <div class="custom-modal-backdrop" (click)="closeEditDialog()"></div>
-                            </div>
-                        </div>
                     </td>
                 </tr>
             </tbody>

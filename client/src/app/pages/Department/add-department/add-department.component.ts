@@ -4,69 +4,82 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { DepartmentService } from '../../../services/department/department.service';
 import { apiUrl } from '../../../constants';
 import { DynamicHeaderComponent } from "../../../components/dynamic-header/dynamic-header.component";
+import { CustomModalComponent } from "./custom-modal/custom-modal.component";
 
 @Component({
   selector: 'app-add-department',
   standalone: true,
-  imports: [CommonModule, FormsModule, DynamicHeaderComponent],
+  imports: [CommonModule, FormsModule, DynamicHeaderComponent, CustomModalComponent],
   templateUrl: './add-department.component.html',
   styleUrl: './add-department.component.scss',
 })
+
 export class AddDepartmentComponent implements OnInit {
+  deptName = '';       
+  departments: any[] = []; 
+  visible: boolean = false; 
+  isEditMode: boolean = false; 
+  editDeptId: number | null = null; 
+
   constructor(private departmentService: DepartmentService) {}
 
-  deptName = '';
+  ngOnInit(): void {
+    this.getDepartment(); 
+  }
 
-  editDeptName = '';
+  // Open the modal for adding a new department
+  showAddDialog() {
+    this.isEditMode = false; 
+    this.deptName = '';      
+    this.visible = true;     
+  }
 
-  departments: any[] = [];
-
-  visible: boolean = false;
-
-  isOpen: boolean = false;
-
+  // Open the modal for editing a department
   showEditDialog(department: any) {
-    this.isOpen = true;
-    this.editDeptName = department.name;
+    this.isEditMode = true;  
+    this.deptName = department.name;  
+    this.editDeptId = department._id; 
+    this.visible = true;     
   }
 
-  closeEditDialog() {
-    this.isOpen = false;
-  }
-
-  showDialog() {
-    this.visible = true;
-  }
-
+  // Close the modal
   closeDialog() {
     this.visible = false;
   }
 
-  ngOnInit(): void {
-    this.getDepartment();
-  }
-
-  ///////////////////         Creating the Department /////////////
-
+  
   saveChanges(form: NgForm) {
     if (form.valid) {
-      this.departmentService.createData(this.deptName, apiUrl.department.create).subscribe(
-        (response) => {
-          console.log('Department created successfully', response);
-          this.deptName = '';
-          this.getDepartment();
-          this.closeDialog();
-        },
-        (error) => {
-          console.log('Something went wrong', error);
-        }
-      );
+      if (this.isEditMode && this.editDeptId) {
+        // Edit department logic
+        this.departmentService.updateDepartment(this.editDeptId, this.deptName, apiUrl.department.update).subscribe(
+          (response) => {
+            console.log('Department updated successfully', response);
+            this.getDepartment();
+            this.closeDialog();
+          },
+          (error) => {
+            console.log('Error updating department', error);
+          }
+        );
+      } else {
+        // Add department logic
+        this.departmentService.createData(this.deptName, apiUrl.department.create).subscribe(
+          (response) => {
+            console.log('Department created successfully', response);
+            this.deptName = '';
+            this.getDepartment();
+            this.closeDialog();
+          },
+          (error) => {
+            console.log('Something went wrong', error);
+          }
+        );
+      }
     }
   }
 
-
-  /////////////////////////      Fetching all the department ///////////
-
+  // Fetch all departments
   getDepartment() {
     this.departmentService.getData(apiUrl.department.get).subscribe((data: any) => {
       this.departments = data.department;
@@ -74,28 +87,10 @@ export class AddDepartmentComponent implements OnInit {
     });
   }
 
-  ///////////////////////    Deleting the Department ///////////////////
-
+  // Delete department
   deleteDepartment(id: any) {
-    this.departmentService.deleteDepartment(id, apiUrl.department.delete).subscribe();
-    this.getDepartment();
-  }
-
-
-  //////////////////////     Edit the department ////////////////////////
-
-  editChanges(id: any, form: NgForm) {
-    if (form.valid) {
-      this.departmentService.updateDepartment(id, this.editDeptName, apiUrl.department.update).subscribe(
-        (response) => {
-          console.log('Department updated successfully', response);
-          this.getDepartment();
-          this.closeEditDialog();
-        },
-        (error) => {
-          console.log('Error updating department', error);
-        }
-      );
-    }
+    this.departmentService.deleteDepartment(id, apiUrl.department.delete).subscribe(() => {
+      this.getDepartment();
+    });
   }
 }

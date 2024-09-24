@@ -1,0 +1,57 @@
+.custom-modal-content {
+    background-color: #212529;
+    position: fixed;
+    width: 350px;
+    left: 40%;
+    color: black;
+    padding: 10px;
+    border-radius: 5px;
+
+
+    .custom-modal-header {
+        display: flex;
+        padding: 5px 2px;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+        color: white;
+
+
+        button {
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+
+
+            i {
+                font-size: 1.2rem;
+                font-weight: 600;
+                color: white;
+            }
+        }
+    }
+
+}
+
+.custom-modal-footer {
+    margin-top: 0.5rem;
+    text-align: right;
+}
+
+button {
+    border: none;
+    padding: 6px 20px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.cancel-button {
+    background-color: #6c757d;
+    color: white
+}
+
+.save-button {
+    background-color: rgb(34, 197, 94);
+    color: white;
+}

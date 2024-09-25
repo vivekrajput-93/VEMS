@@ -28,16 +28,6 @@
                         <input name="jobName" [(ngModel)]="jobName" required class="input-field form-control" />
                     </div>
 
-                    <!-- Validation messages -->
-                    <!-- <div *ngIf="departmentName.invalid &&(departmentName.dirty || departmentName.touched)">
-                                    <small *ngIf="departmentName.errors?.['required']" class="text-danger">
-                                        Department name is required.
-                                    </small>
-                                    <small *ngIf="departmentName.errors?.['pattern']" class="text-danger">
-                                        Only alphabets are allowed.
-                                    </small>
-                                </div> -->
-
                     <div class="custom-modal-footer mt-1">
                         <button type="button" class="cancel-button" (click)="closeDialog()">
                             Cancel
@@ -131,18 +121,6 @@
                                             <input name="jobName" [(ngModel)]="editJobName" required
                                                 class="input-field form-control" />
                                         </div>
-
-                                        <!-- Validation messages -->
-                                        <!-- <div *ngIf="editDepartmentName.invalid &&(editDepartmentName.dirty ||editDepartmentName.touched)">
-                                                <small *ngIf="editDepartmentName.errors?.['required']"
-                                                    class="text-danger">
-                                                    Department name is required.
-                                                </small>
-                                                <small *ngIf="editDepartmentName.errors?.['pattern']"
-                                                    class="text-danger">
-                                                    Only alphabets are allowed.
-                                                </small>
-                                            </div> -->
 
                                         <div class="custom-modal-footer">
                                             <button class="cancel-button" (click)="closeEditDialog()">

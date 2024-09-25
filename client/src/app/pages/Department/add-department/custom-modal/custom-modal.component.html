@@ -1,19 +1,19 @@
 <div class="custom-modal" *ngIf="visible">
-    <div class="custom-modal-content">
-      <div class="custom-modal-header">
-        <h2>{{ title }}</h2>
-        <button (click)="onClose()"><i class="pi pi-times"></i></button>
-      </div>
-
-      <div class="custom-modal-body">
-        <ng-content></ng-content>
-      </div>
-
-      <div class="custom-modal-footer">
-        <button class="cancel-button" (click)="onClose()">Cancel</button> &nbsp;
-        <button type="submit" class="save-button" [disabled]="formInvalid" (click)="onSave()">Save</button>
-      </div>
+  <div class="custom-modal-content">
+    <div class="custom-modal-header">
+      <h2>{{ title }}</h2>
+      <button (click)="onClose()"><i class="pi pi-times"></i></button>
     </div>
 
-    <div class="custom-modal-backdrop" (click)="onClose()"></div>
+    <div class="custom-modal-body">
+      <ng-content></ng-content>
+    </div>
+
+    <div class="custom-modal-footer">
+      <button class="cancel-button" (click)="onClose()">Cancel</button> &nbsp;
+      <button type="submit" class="save-button" [disabled]="formInvalid" (click)="onSave()">Save</button>
+    </div>
   </div>
+
+  <div class="custom-modal-backdrop" (click)="onClose()"></div>
+</div>

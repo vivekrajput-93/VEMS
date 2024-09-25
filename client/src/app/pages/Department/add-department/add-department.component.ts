@@ -51,7 +51,6 @@ export class AddDepartmentComponent implements OnInit {
   saveChanges(form: NgForm) {
     if (form.valid) {
       if (this.isEditMode && this.editDeptId) {
-        // Edit department logic
         this.departmentService.updateDepartment(this.editDeptId, this.deptName, apiUrl.department.update).subscribe(
           (response) => {
             console.log('Department updated successfully', response);
@@ -63,7 +62,6 @@ export class AddDepartmentComponent implements OnInit {
           }
         );
       } else {
-        // Add department logic
         this.departmentService.createData(this.deptName, apiUrl.department.create).subscribe(
           (response) => {
             console.log('Department created successfully', response);

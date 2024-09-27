@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
+import { SidebarToggleService } from '../../../services/sidebar/sidebar-toggle.service';
 
 @Component({
   selector: 'app-header',
@@ -12,9 +13,10 @@ import { Router } from '@angular/router';
 export class HeaderComponent {
 
 
-  constructor(private router : Router) {}
+  constructor(private router : Router, private sidebarToggleService: SidebarToggleService) {}
 
   isDropdownOpen = false;
+
 
   toggleDropdown() {
     this.isDropdownOpen = !this.isDropdownOpen;
@@ -34,5 +36,10 @@ export class HeaderComponent {
     if (dropdownElement && !dropdownElement.contains(target)) {
       this.isDropdownOpen = false;
     }
+  }
+
+
+  toggleSidebar() {
+    this.sidebarToggleService.toggleSidebar(); 
   }
 }

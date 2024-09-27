@@ -1,13 +1,11 @@
 
 .main-container {
-    overflow-y: auto;
-    overflow-x: auto;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     background-color: #212529;
     padding: 10px 8px;
-    height: 100vh;
-    // height: 100%;
+    height: 100%;
     width: 16vw; 
     
 }
@@ -81,4 +79,22 @@ li:hover {
 
   
 
+/* Hide sidebar by default on smaller screens */
+@media (max-width: 1024px) {
+    .main-container {
+      display: none;
+    }
+  }
+  
+  /* Show sidebar when active */
+  .main-container.active {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 250px;
+    background-color: #fff;
+    z-index: 1000;
+  }
   

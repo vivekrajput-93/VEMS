@@ -3,6 +3,7 @@ import { HeaderComponent } from "../../../components/Layouts/header/header.compo
 import { SidebarComponent } from "../../../components/sidebar/sidebar.component";
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { SidebarToggleService } from '../../../services/sidebar/sidebar-toggle.service';
 
 @Component({
   selector: 'app-admin',
@@ -13,11 +14,14 @@ import { CommonModule } from '@angular/common';
 })
 export class AdminComponent {
 
-  isDropdownOpen = false;
+  isSidebarVisible: boolean = false;
 
+  constructor(private sidebarToggleService: SidebarToggleService) {}
 
-  toggleDropdown() {
-    this.isDropdownOpen = !this.isDropdownOpen;
+  ngOnInit() {
+    this.sidebarToggleService.getSidebarState().subscribe((isVisible) => {
+      this.isSidebarVisible = isVisible;
+    });
   }
 
 }

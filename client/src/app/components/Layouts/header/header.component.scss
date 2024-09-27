@@ -198,3 +198,30 @@
   }
   
 
+
+
+
+  @media (max-width: 1024px) {
+    .vems, .flag-container, .search-container, .main-logo {
+        display: none;
+    }
+
+
+    .right-container {
+        width: 100%;
+        justify-content: end;
+        padding-right: 10px;
+    }
+
+
+    .left-container {
+        padding: 0px;
+        padding-left: 20px;
+    }
+
+    .header-container {
+        padding: 14px;
+    }
+  }
+
+

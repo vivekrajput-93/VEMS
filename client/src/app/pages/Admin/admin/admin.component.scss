@@ -1,3 +1,8 @@
+// .main-container {
+//   height: fit-content;
+// }
+
+
 
 * {
     color: white;
@@ -7,7 +12,8 @@
 
 .grid-container {
 
-    height: fit-content;
+    height: 100%;
+    width: 100%;
     display: flex;
     gap: 2rem;
 }
@@ -17,6 +23,8 @@
 .content-container {
     flex: 4;
     padding: 0px 20px;
+    // height: 100vh;
+    // overflow: auto;
 }
 
 
@@ -40,4 +48,8 @@
 
   
   
-  
+  @media screen and (max-width : 768px) {
+    .main-container {
+      width: 100%;
+    }
+  }

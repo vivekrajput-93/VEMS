@@ -194,7 +194,7 @@ export class CreateEmployeeComponent {
   }
 
 
-  /////////////////////////         Edit the Employee ///////////////////
+  /////////////////////////         Edit the Employee /////////////////
 
   updateEmployee(id:number, employee : any) {
     const updatedEmployee = {
@@ -212,7 +212,7 @@ export class CreateEmployeeComponent {
       next: (response: any) => {
         console.log('Employee updated successfully', response);
         this.getEmployee(); 
-        this.closeEditDilog()
+        this.closeEditDilog();
       },
       error: (err: any) => {
         console.log('Error updating employee', err);

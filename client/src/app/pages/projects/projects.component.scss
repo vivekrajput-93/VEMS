@@ -1,0 +1,45 @@
+
+.search-container {
+    // border: 2px solid green;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+
+
+    div {
+        outline: none;
+        // padding: 10px 25px;
+        flex: 1;
+
+
+        input {
+            outline: none;
+            padding: 15px 30px;
+            border: none;
+            background-color: #212529;
+            color: #eee;
+            border-radius: 2px;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+    }
+
+
+    .btn-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        button {
+            width: 100%;
+            padding: 12px 0px;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            background-color: rgb(34, 197, 97);
+            color: white;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+    }
+}

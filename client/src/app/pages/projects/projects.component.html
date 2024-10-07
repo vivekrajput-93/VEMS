@@ -1,20 +1,296 @@
 <div class="main-container">
     <app-dynamic-header [title]="'Projects'" [breadcrumb]="'Dashboard / Projects'"
-    [addButtonText]="'Add Projects'" ></app-dynamic-header>
+        [addButtonText]="'Add Projects'"></app-dynamic-header>
 
     <div class="search-container">
         <div class="input-container">
-            <input type="text" placeholder="Project Name">
+            <input type="text" placeholder="Project Name" />
         </div>
         <div class="input-container">
-            <input type="text" placeholder="Employee Name">
+            <input type="text" placeholder="Employee Name" />
         </div>
         <div class="select-container">
-            <input type="text" placeholder="select Designation">
+            <input type="text" placeholder="select Designation" />
         </div>
-        <div class="btn-container"> 
+        <div class="btn-container">
             <button class="search-btn">Search</button>
         </div>
-
     </div>
-</div>
+
+    <div class="main-project-container">
+        <div class="project-section">
+            <div class="hamburger">
+                <i class="pi pi-ellipsis-v"></i>
+            </div>
+            <div class="project-heading">
+                <h2>Office Management</h2>
+                <div class="sub-heading">
+                    <p>1 open tasks,</p>
+                    <p>9 task completed</p>
+                </div>
+            </div>
+
+            <p class="project-desc">
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. When an unknown printer took a galley of type and scrambled
+                it...
+            </p>
+
+            <div class="deadline">
+                <span>Deadline :</span>
+                <span>7 July 2007</span>
+            </div>
+
+            <div class="project-leader-section">
+                <h4>Project Leader :</h4>
+                <div class="project-leader">
+                    <span matTooltipPosition="above" mat-raised-button  matTooltip="{{emp.firstName}} {{emp.lastName}}" *ngFor="let emp of Employees.slice(0, 1)"
+                        aria-label="Button that displays a tooltip when focused or hovered over">
+                        {{emp.firstName | firstletter}}
+                    </span>
+                </div>
+            </div>
+
+            <div class="project-team-section">
+                <h4>Team :</h4>
+                <div class="project-team" >
+                    <div class="team-member one " >
+                        <span matTooltipPosition="above" mat-raised-button matTooltip="{{emp.firstName}} {{emp.lastName}}" *ngFor="let emp of Employees.slice(1, 2)">{{emp.firstName | firstletter}}</span>
+                        
+                    </div>
+                     <div class="team-member two">
+                        <span matTooltipPosition="above" mat-raised-button matTooltip="{{emp.firstName}} {{emp.lastName}}" *ngFor="let emp of Employees.slice(2, 3)">{{emp.firstName | firstletter}}</span>
+                    </div>
+                    <div class="team-member three">
+                        <span matTooltipPosition="above" mat-raised-button matTooltip="{{emp.firstName}} {{emp.lastName}}" *ngFor="let emp of Employees.slice(3, 4)">{{emp.firstName | firstletter}}</span>
+                    </div>
+                    <div class="team-member four">
+                        <span matTooltipPosition="above" mat-raised-button matTooltip="{{emp.firstName}} {{emp.lastName}}" *ngFor="let emp of Employees.slice(4, 5)">{{emp.firstName | firstletter}}</span>
+                        
+                    </div>
+                    <div class="team-member five">
+                        <span>7+</span>
+                    </div> 
+                </div>
+            </div>
+
+            <div class="progress-section">
+                <div class="progress-heading">
+                    <h4>Progress</h4>
+                    <span>40%</span>
+                </div>
+
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="project-section">
+            <div class="hamburger">
+                <i class="pi pi-ellipsis-v"></i>
+            </div>
+            <div class="project-heading">
+                <h2>Project Management</h2>
+                <div class="sub-heading">
+                    <p>2 open tasks,</p>
+                    <p>5 task completed</p>
+                </div>
+            </div>
+
+            <p class="project-desc">
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. When an unknown printer took a galley of type and scrambled
+                it...
+            </p>
+
+            <div class="deadline">
+                <span>Deadline :</span>
+                <span>7 July 2007</span>
+            </div>
+
+            <div class="project-leader-section">
+                <h4>Project Leader :</h4>
+                <div class="project-leader">
+                    <span matTooltipPosition="above" mat-raised-button matTooltip="{{emp.firstName}}  {{emp.lastName}}" *ngFor="let emp of Employees.slice(0, 1)"
+                        aria-label="Button that displays a tooltip when focused or hovered over">
+                        {{emp.firstName | firstletter}}
+                    </span>
+                </div>
+            </div>
+
+            <div class="project-team-section">
+                <h4>Team :</h4>
+                <div class="project-team" >
+                    <div class="team-member one " >
+                        <span matTooltipPosition="above" mat-raised-button matTooltip="{{emp.firstName}} {{emp.lastName}}" *ngFor="let emp of Employees.slice(1, 2)">{{emp.firstName | firstletter}}</span>
+                        
+                    </div>
+                     <div class="team-member two">
+                        <span matTooltipPosition="above" mat-raised-button matTooltip="{{emp.firstName}} {{emp.lastName}}" *ngFor="let emp of Employees.slice(2, 3)">{{emp.firstName | firstletter}}</span>
+                    </div>
+                    <div class="team-member three">
+                        <span matTooltipPosition="above" mat-raised-button matTooltip="{{emp.firstName}} {{emp.lastName}}" *ngFor="let emp of Employees.slice(3, 4)">{{emp.firstName | firstletter}}</span>
+                    </div>
+                    <div class="team-member four">
+                        <span matTooltipPosition="above" mat-raised-button matTooltip="{{emp.firstName}} {{emp.lastName}}" *ngFor="let emp of Employees.slice(4, 5)">{{emp.firstName | firstletter}}</span>
+                        
+                    </div>
+                    <div class="team-member five">
+                        <span>7+</span>
+                    </div> 
+                </div>
+            </div>
+
+            <div class="progress-section">
+                <div class="progress-heading">
+                    <h4>Progress</h4>
+                    <span>40%</span>
+                </div>
+
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+            </div>
+
+        </div>
+        
+        <div class="project-section">
+            <div class="hamburger">
+                <i class="pi pi-ellipsis-v"></i>
+            </div>
+            <div class="project-heading">
+                <h2>Video Calling App</h2>
+                <div class="sub-heading">
+                    <p>3 open tasks,</p>
+                    <p>3 task completed</p>
+                </div>
+            </div>
+
+            <p class="project-desc">
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. When an unknown printer took a galley of type and scrambled
+                it...
+            </p>
+
+            <div class="deadline">
+                <span>Deadline :</span>
+                <span>7 July 2007</span>
+            </div>
+
+            <div class="project-leader-section">
+                <h4>Project Leader :</h4>
+                <div class="project-leader">
+                    <span matTooltipPosition="above" mat-raised-button matTooltip="{{emp.firstName}}  {{emp.lastName}}" *ngFor="let emp of Employees.slice(0, 1)"
+                        aria-label="Button that displays a tooltip when focused or hovered over">
+                        {{emp.firstName | firstletter}}
+                    </span>
+                </div>
+            </div>
+
+            <div class="project-team-section">
+                <h4>Team :</h4>
+                <div class="project-team" >
+                    <div class="team-member one " >
+                        <span matTooltipPosition="above" mat-raised-button matTooltip="{{emp.firstName}} {{emp.lastName}}" *ngFor="let emp of Employees.slice(1, 2)">{{emp.firstName | firstletter}}</span>
+                        
+                    </div>
+                     <div class="team-member two">
+                        <span matTooltipPosition="above" mat-raised-button matTooltip="{{emp.firstName}} {{emp.lastName}}" *ngFor="let emp of Employees.slice(2, 3)">{{emp.firstName | firstletter}}</span>
+                    </div>
+                    <div class="team-member three">
+                        <span matTooltipPosition="above" mat-raised-button matTooltip="{{emp.firstName}} {{emp.lastName}}" *ngFor="let emp of Employees.slice(3, 4)">{{emp.firstName | firstletter}}</span>
+                    </div>
+                    <div class="team-member four">
+                        <span matTooltipPosition="above" mat-raised-button matTooltip="{{emp.firstName}} {{emp.lastName}}" *ngFor="let emp of Employees.slice(4, 5)">{{emp.firstName | firstletter}}</span>
+                        
+                    </div>
+                    <div class="team-member five">
+                        <span>7+</span>
+                    </div> 
+                </div>
+            </div>
+
+            <div class="progress-section">
+                <div class="progress-heading">
+                    <h4>Progress</h4>
+                    <span>40%</span>
+                </div>
+
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="project-section">
+            <div class="hamburger">
+                <i class="pi pi-ellipsis-v"></i>
+            </div>
+            <div class="project-heading">
+                <h2>Hotel Administration</h2>
+                <div class="sub-heading">
+                    <p>12 open tasks,</p>
+                    <p>14 task completed</p>
+                </div>
+            </div>
+
+            <p class="project-desc">
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. When an unknown printer took a galley of type and scrambled
+                it...
+            </p>
+
+            <div class="deadline">
+                <span>Deadline :</span>
+                <span>7 July 2007</span>
+            </div>
+
+            <div class="project-leader-section">
+                <h4>Project Leader :</h4>
+                <div class="project-leader">
+                    <span matTooltipPosition="above" mat-raised-button matTooltip="{{emp.firstName}}  {{emp.lastName}}" *ngFor="let emp of Employees.slice(0, 1)"
+                        aria-label="Button that displays a tooltip when focused or hovered over">
+                        {{emp.firstName | firstletter}}
+                    </span>
+                </div>
+            </div>
+
+            <div class="project-team-section">
+                <h4>Team :</h4>
+                <div class="project-team" >
+                    <div class="team-member one " >
+                        <span matTooltipPosition="above" mat-raised-button matTooltip="{{emp.firstName}} {{emp.lastName}}" *ngFor="let emp of Employees.slice(1, 2)">{{emp.firstName | firstletter}}</span>
+                        
+                    </div>
+                     <div class="team-member two">
+                        <span matTooltipPosition="above" mat-raised-button matTooltip="{{emp.firstName}} {{emp.lastName}}" *ngFor="let emp of Employees.slice(2, 3)">{{emp.firstName | firstletter}}</span>
+                    </div>
+                    <div class="team-member three">
+                        <span matTooltipPosition="above" mat-raised-button matTooltip="{{emp.firstName}} {{emp.lastName}}" *ngFor="let emp of Employees.slice(3, 4)">{{emp.firstName | firstletter}}</span>
+                    </div>
+                    <div class="team-member four">
+                        <span matTooltipPosition="above" mat-raised-button matTooltip="{{emp.firstName}} {{emp.lastName}}" *ngFor="let emp of Employees.slice(4, 5)">{{emp.firstName | firstletter}}</span>
+                        
+                    </div>
+                    <div class="team-member five">
+                        <span>7+</span>
+                    </div> 
+                </div>
+            </div>
+
+            <div class="progress-section">
+                <div class="progress-heading">
+                    <h4>Progress</h4>
+                    <span>40%</span>
+                </div>
+
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>

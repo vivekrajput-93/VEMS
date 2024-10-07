@@ -43,3 +43,206 @@
         }
     }
 }
+
+
+//////////////////////    project Section ////////////////////////////
+
+.main-project-container {
+ 
+    // border: 2px solid rgb(34, 197, 97);
+    display: flex;
+    gap: 15px;
+    padding: 20px;
+
+
+    .project-section {
+        background-color: #212529;
+        border-radius: 4px;
+        flex: 1;
+        padding: 10px;
+    }
+
+
+    .hamburger {
+        // border: 2px solid blue;
+        width: fit-content;
+        padding: 5px 0px;
+        float: right;
+        // margin-bottom: 40px;
+
+        i {
+            color: #262f37;
+            font-size: 1.4rem;
+        }
+    }
+
+
+    .project-heading h2 {
+        font-size: 1.3rem;
+        font-weight: 500;
+        color: #EEE;
+    }
+
+    .sub-heading {
+        display: flex;
+        margin-top: 5px;
+        gap: 5px;
+        font-size: .8rem;
+    }
+
+
+    .project-desc {
+        margin: 15px 0px;
+        color: gray;
+    }
+
+    .deadline {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        margin: 15px 0px;
+
+        span:first-child {
+            color: #EEE;
+        }
+
+        span:last-child {
+            font-size: .9rem;
+            font-weight: 600;
+            color: gray;
+            margin-bottom: 10px;
+            
+        }
+    }
+
+.project-leader-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    h4 {
+        color: #EEE;
+        font-weight: 400;
+    }
+
+    .project-leader {
+        background-color: #262f37;
+        width: 28px;
+        padding: 4px;
+        height: 28px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+
+}
+
+.project-team-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 15px 0px;
+
+    h4 {
+        color: #eee;
+        font-weight: 400;
+    }
+
+    .project-team {
+        display: flex;
+        width: fit-content;
+        
+    }
+
+    .team-member {
+        background-color: #262f37;
+        width: 28px;
+        padding: 4px;
+        height: 28px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        align-items: center;
+        cursor: pointer;
+        position: relative;
+        
+    }
+
+    .two {
+        position: relative;
+        right: 6px;
+        z-index: 10;
+        border: 2px solid #212529;
+    }
+
+    .three {
+        position: relative;
+        right: 12px;
+        z-index: 10;
+        border: 2px solid #212529;
+    }
+
+    .four {
+        position: relative;
+        right: 18px;
+        z-index: 10;
+        border: 2px solid #212529;
+    }
+
+    .five {
+        position: relative;
+        right: 24px;
+        z-index: 10;
+        border: 2px solid #212529;
+        background-color: rgb(34, 197, 97);
+        color: white;
+    }
+
+    
+
+}
+
+
+
+.progress-section {
+    // border: 2px solid rgb(34, 197, 97);
+    // margin: 15px 0px;
+    padding: 7px 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .progress-heading {
+        display: flex;
+        justify-content: space-between;
+
+        h4 {
+            font-weight: 400;
+            color: #EEE;
+        }
+
+        span {
+            color: rgb(34, 197, 97);
+        }
+    }
+
+    .progress-bar {
+        height: 10px;
+        border-radius: 20px;
+        background-color: #262f37;
+
+        .progress {
+            // padding: 5px 0px;
+            height: 10px;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+            background-color: rgb(34, 197, 97);
+            width: 40%;
+        }
+    }
+}
+
+}

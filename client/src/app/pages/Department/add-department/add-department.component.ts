@@ -70,7 +70,7 @@ export class AddDepartmentComponent implements OnInit {
             this.closeDialog();
           },
           (error) => {
-            console.log('Something went wrong', error);
+            console.log('Something went wrong, please check again', error);
           }
         );
       }
